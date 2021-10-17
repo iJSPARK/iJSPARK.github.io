@@ -3,7 +3,7 @@ title : "Post Test"
 categories : 
     - Data Structure
 tags :
-    - hello world
+    - C
 author_profile: true
 
 toc : true # 목차
