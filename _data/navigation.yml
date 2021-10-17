@@ -10,7 +10,7 @@ main:
     url: /tags/
  
  docs:
-  -title: "List"
+  - title: "List"
    children:
     - title: "Category"
       url: /categories/
