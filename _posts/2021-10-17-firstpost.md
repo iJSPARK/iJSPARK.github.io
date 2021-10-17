@@ -2,8 +2,8 @@
 title : "Post Test"
 categories : 
     - Data Structure
-tags :
-    - C
+tag :
+    - C # [C, python]
 author_profile: true
 
 toc : true # 목차
