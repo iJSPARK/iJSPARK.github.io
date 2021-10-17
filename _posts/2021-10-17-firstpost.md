@@ -4,14 +4,11 @@ categories :
     - Data Structure
 tag :
     - C # [C, python]
-author_profile: true
-
+author_profile: false
+sidebar:
+    nav: "docs"
 toc : true # 목차
 ---
-
-- 이미지 목차
-        - 이미지 세부 목차1
-        - 이미지 세부 목차2
 
 ```c
 #include <stdio.h> 
