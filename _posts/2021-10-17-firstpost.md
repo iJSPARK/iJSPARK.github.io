@@ -12,9 +12,9 @@ toc_sticky: true
 toc_label: "On This Page"
 ---
 
-접미사 접두사 이용
-kmp 알고리즘
-boyer-moore 알고리즘
+### 1. 접미사 접두사 이용
+### 2. kmp 알고리즘
+### 3. boyer-moore 알고리즘
 
 ```c
 #include <stdio.h> 
