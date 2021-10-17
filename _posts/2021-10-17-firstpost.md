@@ -1,9 +1,7 @@
 ---
 title : "Post Test"
-category :
+categories : 
     - Data Structure
-    - Algorithms
-    - Computer Architecture
 tags :
     - hello world
 author_profile: true
