@@ -4,7 +4,7 @@ category :
     - Data Structure
     - Algorithms
     - Computer Architecture
-tag :
+tags :
     - hello world
 author_profile: true
 
