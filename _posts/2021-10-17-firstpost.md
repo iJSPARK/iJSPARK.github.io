@@ -8,17 +8,9 @@ tags :
     - hello world
 author_profile: true
 
-toc : true
+toc : true # 목차
 ---
 
-hello
+Start blog
 
-## hello
-
-### hello
-
-#### hello
-
-$$hello$$
-
-$hello$
+I'm study iOS, DS, Algorihms, Computer Architecture, network, OS
