@@ -7,10 +7,11 @@ tag :
 author_profile: true
 
 toc : true # 목차
-    - 이미지 목차
+---
+
+- 이미지 목차
         - 이미지 세부 목차1
         - 이미지 세부 목차2
----
 
 ```c
 #include <stdio.h> 
