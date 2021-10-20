@@ -3,7 +3,7 @@ title : "Processor"
 categories : 
     - Computer Architecture
 tag :
-    - [Processorm CPU]  # [C, python]
+    - [CPU]  # [C, python]
 author_profile: false
 sidebar:
     nav: "docs"
