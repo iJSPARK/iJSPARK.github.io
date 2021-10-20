@@ -15,6 +15,6 @@ docs:
   - title: "List"
     children:
       - title: "Category"
-        url: /categories/
+        url: /categories/Computer Architecture/
       - title: "Tag"
         url: /tags/
