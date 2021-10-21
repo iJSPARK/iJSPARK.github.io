@@ -18,15 +18,15 @@ toc_label: "On This Page"
 
 Seven main part of a computer: Processor, Memory, Motherboard, Input device, Output device, Interconnects, Chipset.
 
-* **Power supply**
+* **Power supply**  
 	<img width="250" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137908862-b351cbc5-9ac0-408b-974c-3f795872ebcc.jpg">
 	- AC(Outlet) -> DC(Electronic products)
 	- Each component of the computer divides the voltage it needs and provides it evenly at the same time
-* **Processor**
+* **Processor**  
 	<img width="300" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137766451-95c4bb58-8e83-4c2c-aa00-702ddc432b83.jpg">
 	- Also called CPU(Central Processing Unit)
 	- Operate process(excuted program)
-* **Memory**
+* **Memory**  
 	- Caches 
 	Temporary small memory to copy data ​​for quick access of in/outside CPU
 	- Register
@@ -38,17 +38,17 @@ Seven main part of a computer: Processor, Memory, Motherboard, Input device, Out
 			Data is disappeared and chnaged 
 			2. SRAM(Static RAM) 
 			Data is changed with passing the time
-		- ROM(Read Only Memory)
+		- ROM(Read Only Memory)  
 		<img width="250" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137910366-b73829ea-72d8-4990-8d39-2d5f4c15fa0f.png">
 		Non-Volatile Memory
 	- Secondary Memory
 		- HDD(Hard Disk Drive)
 		Physical storage device(slow)
 		- SSD(Solid State Disk)
-		Electrically erased and reprogrammed(very fast)
+		Electrically erased and reprogrammed(very fast)  
 		<img width="500" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137911466-935659fc-2819-43cb-9cf7-c5327dc90076.PNG">
 		- CD-ROM, DVD, FLASH
-* **Motherboard**
+* **Motherboard**  
 	<img width="500" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137911970-350f58db-bdc2-440c-b2a2-74543d84225e.png">
 	- Also called mainboard
 	-  It holds and allows communication between many of the crucial electronic components of a system, such as the CPU and memory, and provides connectors for other peripherals.
@@ -61,7 +61,7 @@ Seven main part of a computer: Processor, Memory, Motherboard, Input device, Out
 	- buses : A communication system that transfers data and information between computer communication components and between computers.
 * **Chipset(Data Flow Management System)**
 	- Northbridge(Memory controller hub) : Manage communication between CPU, RAM, GQU, Southbridge, PCI express
-	- Southbridge(I/O Controller hub) : Manage for input/output with the device
+	- Southbridge(I/O Controller hub) : Manage for input/output with the device  
 	<img width="500" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137914656-e6f962f0-7f22-4e48-b5fc-0d6d8425443b.png">
 
 <br/>
