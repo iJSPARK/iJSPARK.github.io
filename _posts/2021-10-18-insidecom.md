@@ -29,28 +29,29 @@ Seven main part of a computer: Processor, Memory, Motherboard, Input device, Out
 	- Operate process(excuted program)
 
 * **Memory**  
-	- Caches 
+	- Caches  
 	Temporary small memory to copy data ​​for quick access of in/outside CPU
 
-	- Register
+	- Register  
 	Temporary small memory to copy data ​​for fast access then cache of inside CPU 
 
-	- Main Memory
-		- RAM(Random Acess Memory) : Temporary storage memory(Volatile Memory)
+	- Main Memory  
+		- RAM(Random Acess Memory)  
+		Temporary storage memory(Volatile Memory)
 		<img width="300" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137910130-65fea509-e083-4982-931c-6a6e77dc032e.png">
-			1. DRAM(Dynamic RAM) 
+			1. DRAM(Dynamic RAM)  
 			Data is disappeared and chnaged 
-			2. SRAM(Static RAM) 
+			2. SRAM(Static RAM)  
 			Data is changed with passing the time
 
 		- ROM(Read Only Memory)  
-		<img width="250" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137910366-b73829ea-72d8-4990-8d39-2d5f4c15fa0f.png">
+		<img width="250" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137910366-b73829ea-72d8-4990-8d39-2d5f4c15fa0f.png">  
 		Non-Volatile Memory
 
 	- Secondary Memory
-		- HDD(Hard Disk Drive)
+		- HDD(Hard Disk Drive)  
 		Physical storage device(slow)
-		- SSD(Solid State Disk)
+		- SSD(Solid State Disk)  
 		Electrically erased and reprogrammed(very fast)  
 		<img width="500" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137911466-935659fc-2819-43cb-9cf7-c5327dc90076.PNG">
 
