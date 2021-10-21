@@ -44,9 +44,9 @@ Seven main part of a computer: Processor, Memory, Motherboard, Input device, Out
 			2. SRAM(Static RAM)  
 			Data is changed with passing the time
 
-		- ROM(Read Only Memory)  
+		- ROM(Read Only Memory)
+		Non-Volatile Memory  
 		<img width="250" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137910366-b73829ea-72d8-4990-8d39-2d5f4c15fa0f.png">  
-		Non-Volatile Memory
 
 	- Secondary Memory
 		- HDD(Hard Disk Drive)  
