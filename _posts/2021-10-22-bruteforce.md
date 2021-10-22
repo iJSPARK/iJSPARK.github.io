@@ -9,86 +9,91 @@ sidebar:
     nav: "docs"
 toc: true # 목차
 toc_sticky: true
+toc_label: "On This Page"
 ---
 
 ### How to crack(search) a password by substituting all possible strings one by one
 `i` is index of string to search and `^` is mismatch.
+
+(1) mismatch
 ```c
-i
+i........
 ABABCDEFG
 ABC
 
- i
+.i.......
 ABABCDEFG
 ABC
 
-  i
+..i......
 ABABCDEFG
 ABC
 
-  ^
+..^......
 ABABCDEFG
 ABC
 ```
 
+(2) mismatch
 ```c
- i
+.i.......
 ABABCDEFG
  ABC
 
- ^
+.^.......
 ABABCDEFG
  ABC
 ```
 
+(3) match
 ```c
-  i
+..i......
+ABABCDEFG
+  ABC
+  
+...i.....
 ABABCDEFG
   ABC
 
-   i
-ABABCDEFG
-  ABC
-
-    i
+....i....
 ABABCDEFG
   ABC
 ```
 
-#### Program that search for string2 in string1 using Brute-Force
-text(`txt`) of bf_match function is string1 and string2 is called pattern(`pat`).
-If search match, it returns first index + 1 of string1 and otherwise it returns -1.
+#### Program that search for pattern in text using Brute-Force
+`txt` of bf_match function is text and `pat` is called pattern.
+If search match, it returns the first matched index of `txt` and otherwise it returns -1.
 
 ```c
 /*--- Program that search for a string using Brute-Force ---*/
 #pragma warning (disable:4996)
 #include <stdio.h>
 
-/* Function that search for pattern(s2) in text(s1) using Brute-Force */
+/* Function that search for pattern in text using Brute-Force */
 int bf_match(const char txt[], const char pat[])
 {
-	int pt = 0;		// txt cursor 
-	int pp = 0;		// pat cursor 
+	int pt = 0; // txt cursor 
+	int pp = 0; // pat cursor 
 	while (txt[pt] != '\0' && pat[pp] != '\0') {
 		if (txt[pt] == pat[pp]) { 
 			pt++;
 			pp++;
 		}
 		else {
-			pt = pt - pp + 1; // txt cursor update 
+			pt = pt - pp + 1;   // txt cursor update 
 			pp = 0; // pat cursor initialization : to the first index 
 		}
 	}
 	if (pat[pp] == '\0')
-		return pt - pp;
+		return pt - pp; // return the first matched index
 	return -1;
 }
 
 int main(void)
 {
 	int idx;
-	char s1[256];		// txt 
-	char s2[256];		// pat 
+	char s1[256];   // txt 
+	char s2[256];   // pat 
 
 	puts("Brute-Force");
 	printf("Text : ");
