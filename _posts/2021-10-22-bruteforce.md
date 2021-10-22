@@ -34,6 +34,7 @@ ABABCDEFG
 ABC
 ```
 
+
 (2) mismatch
 ```c
 .i.......
@@ -44,6 +45,7 @@ ABABCDEFG
 ABABCDEFG
  ABC
 ```
+
 
 (3) match
 ```c
@@ -61,7 +63,7 @@ ABABCDEFG
 ```
 
 #### Program that search for pattern in text using Brute-Force
-`txt` of bf_match function is text and `pat` is called pattern.
+`txt` of bf_match function is text and `pat` is called pattern.  
 If search match, it returns the first matched index of `txt` and otherwise it returns -1.
 
 ```c
@@ -108,4 +110,6 @@ int main(void)
 		printf("Match from the %dth character.\n", idx + 1);
 
 	return 0;
+}
+
 ```
