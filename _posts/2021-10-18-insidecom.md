@@ -1,7 +1,7 @@
 ---
 title : "What's inside a computer?"
-categories/algorithm : 
-    - Algorithm
+categories : 
+    - Computer Science
 tag :
     - [CPU, Memory, Motherboard, Input device, Output device, Interconnects, chipset]  # [C, python]
 author_profile: false
