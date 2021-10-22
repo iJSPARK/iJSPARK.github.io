@@ -17,7 +17,7 @@ toc_sticky: true
 text(`txt`) of bf_match function is string1 and string2 is called pattern(`pat`).
 If search match, it returns first index + 1 of string1 and otherwise it returns -1.
 
-```C
+```c
 /*--- Program that search for a string using Brute-Force ---*/
 #pragma warning (disable:4996)
 #include <stdio.h>
