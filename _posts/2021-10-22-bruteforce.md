@@ -64,6 +64,8 @@ ABABCDEFG
   ABC
 ```
 
+<br/>
+
 #### Program that search for pattern in text using Brute-Force
 `txt` of bf_match function is text and `pat` is called pattern.  
 If search match, it returns the first matched index of `txt` and otherwise it returns -1.
