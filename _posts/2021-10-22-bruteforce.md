@@ -33,7 +33,7 @@ ABC
 ABABCDEFG
 ABC
 ```
-
+  
 
 (2) mismatch
 ```c
@@ -45,8 +45,8 @@ ABABCDEFG
 ABABCDEFG
  ABC
 ```
-
-
+  
+  
 (3) match
 ```c
 ..i......
