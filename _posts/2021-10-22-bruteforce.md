@@ -12,6 +12,48 @@ toc_sticky: true
 ---
 
 ### How to crack(search) a password by substituting all possible strings one by one
+`i` is index of string to search and `^` is mismatch.
+```c
+i
+ABABCDEFG
+ABC
+
+ i
+ABABCDEFG
+ABC
+
+  i
+ABABCDEFG
+ABC
+
+  ^
+ABABCDEFG
+ABC
+```
+
+```c
+ i
+ABABCDEFG
+ ABC
+
+ ^
+ABABCDEFG
+ ABC
+```
+
+```c
+  i
+ABABCDEFG
+  ABC
+
+   i
+ABABCDEFG
+  ABC
+
+    i
+ABABCDEFG
+  ABC
+```
 
 #### Program that search for string2 in string1 using Brute-Force
 text(`txt`) of bf_match function is string1 and string2 is called pattern(`pat`).
@@ -22,19 +64,19 @@ If search match, it returns first index + 1 of string1 and otherwise it returns 
 #pragma warning (disable:4996)
 #include <stdio.h>
 
-/* Function that search for a string using Brute-Force */
+/* Function that search for pattern(s2) in text(s1) using Brute-Force */
 int bf_match(const char txt[], const char pat[])
 {
-	int pt = 0;		/* txt cursor */
-	int pp = 0;		/* pat cursor */
+	int pt = 0;		// txt cursor 
+	int pp = 0;		// pat cursor 
 	while (txt[pt] != '\0' && pat[pp] != '\0') {
-		if (txt[pt] == pat[pp]) {
+		if (txt[pt] == pat[pp]) { 
 			pt++;
 			pp++;
 		}
 		else {
-			pt = pt - pp + 1;
-			pp = 0;
+			pt = pt - pp + 1; // txt cursor update 
+			pp = 0; // pat cursor initialization : to the first index 
 		}
 	}
 	if (pat[pp] == '\0')
@@ -45,8 +87,8 @@ int bf_match(const char txt[], const char pat[])
 int main(void)
 {
 	int idx;
-	char s1[256];		/* txt */
-	char s2[256];		/* pat */
+	char s1[256];		// txt 
+	char s2[256];		// pat 
 
 	puts("Brute-Force");
 	printf("Text : ");
@@ -54,7 +96,7 @@ int main(void)
 	printf("Pattern : ");
 	scanf("%s", s2);
 
-	idx = bf_match(s1, s2);	// search for pattern(s2) in text(s1) using Brute-Force
+	idx = bf_match(s1, s2);	
 	if (idx == -1)
 		puts("There is no patten in text");
 	else
