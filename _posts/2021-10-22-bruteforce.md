@@ -13,9 +13,9 @@ toc_label: "On This Page"
 ---
 
 ### How to crack(search) a password by substituting all possible strings one by one
-`i` is index of string to search and `^` is mismatch.
+`i` is the index currently being searched for, and `x` is mismatch.
 
-(1) mismatch
+(1) Mismatch
 ```c
 i........
 ABABCDEFG
@@ -29,27 +29,27 @@ ABC
 ABABCDEFG
 ABC
 
-..^......
+..x......
 ABABCDEFG
 ABC
 ```
 
 <br/>
 
-(2) mismatch
+(2) Mismatch
 ```c
 .i.......
 ABABCDEFG
  ABC
 
-.^.......
+.x.......
 ABABCDEFG
  ABC
 ```
 
 <br/>
 
-(3) match
+(3) Match
 ```c
 ..i......
 ABABCDEFG
