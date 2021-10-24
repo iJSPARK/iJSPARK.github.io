@@ -64,7 +64,7 @@ ABABCDEFG
   ABC
 ```
 
-<br/>
+---
 
 #### Program that search for pattern in text using Brute-Force
 `txt` of bf_match function is text and `pat` is called pattern.  
@@ -98,16 +98,17 @@ int bf_match(const char txt[], const char pat[])
 int main(void)
 {
 	int idx;
-	char s1[256];   // txt 
-	char s2[256];   // pat 
+	char str1[256];   // txt 
+	char str2[256];   // pat 
 
 	puts("Brute-Force");
 	printf("Text : ");
-	scanf("%s", s1);
+	scanf("%s", str1);
 	printf("Pattern : ");
-	scanf("%s", s2);
+	scanf("%s", str2);
 
-	idx = bf_match(s1, s2);	
+	idx = bf_match(str1, str2);	
+
 	if (idx == -1)
 		puts("There is no patten in text");
 	else
@@ -117,3 +118,12 @@ int main(void)
 }
 
 ```
+
+----
+
+#### Big-O
+
+* Time complexity : $O(mn)$
+* Space complexity : $O(n)$
+
+If string length of text is $n$ and length of pattern is $m$, In Brute-Force, the worst case time complexity is $O(mn)$
