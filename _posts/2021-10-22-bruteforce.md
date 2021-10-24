@@ -13,6 +13,7 @@ toc_label: "On This Page"
 ---
 
 ### How to crack(search) a password by substituting all possible strings one by one
+
 `i` is the index currently being searched for, and `x` is mismatch.
 
 (1) Mismatch
@@ -67,6 +68,7 @@ ABABCDEFG
 ---
 
 #### Program that search for pattern in text using Brute-Force
+
 `txt` of bf_match function is text and `pat` is called pattern.  
 If search match, it returns the first matched index of `txt` and otherwise it returns -1.
 
