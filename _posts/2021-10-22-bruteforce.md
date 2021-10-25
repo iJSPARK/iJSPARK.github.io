@@ -124,8 +124,7 @@ int main(void)
 ----
 
 #### Big-O
+* Time complexity : O(mn)
+* Space complexity : O(n)
 
-* Time complexity : $O(mn)$
-* Space complexity : $O(n)$
-
-If string length of text is $n$ and length of pattern is $m$, In Brute-Force, the worst case time complexity is $O(mn)$
+If string length of text is n and length of pattern is m, In Brute-Force, the worst case time complexity is O(mn)
