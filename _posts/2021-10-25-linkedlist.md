@@ -13,10 +13,9 @@ toc_sticky: true
 toc_label: "On This Page"
 ---
 
-#### Problem of linear list
+#### Problem of linear list  
 
 **Linear List**
-
 ```c
 /* Member struct */
 typedef struct { 
@@ -58,6 +57,7 @@ A person with a mem_no 44 was inserted between men_no 22 and 66.
 
 #### Pointer Linked list
 
+Create node when insert to data for linked list
 * Linked list
 
 * Brute-Force
