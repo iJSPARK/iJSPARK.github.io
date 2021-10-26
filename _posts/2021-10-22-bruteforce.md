@@ -3,7 +3,7 @@ title : "Brute-Force"
 categories : 
     - Algorithm
 tag :
-    - [Exhaustive, Bruteforce]  # [C, python]
+    - [C, Exhaustive, String Search, Brute-Force]  # [C, python]
 author_profile: false
 sidebar:
     nav: "docs"
@@ -12,7 +12,9 @@ toc_sticky: true
 toc_label: "On This Page"
 ---
 
-### How to crack(search) a password by substituting all possible strings one by one
+#### Brute-Force, a simple string search
+
+How to crack(search) a password by substituting all possible strings one by one.
 
 `i` is the index currently being searched for, and `x` is mismatch.
 

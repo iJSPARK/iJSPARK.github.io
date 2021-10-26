@@ -3,7 +3,7 @@ title : "What's inside a computer?"
 categories : 
     - Computer Architecture
 tag :
-    - [CPU, Memory, Motherboard, Input device, Output device, Interconnects, chipset]  # [C, python]
+    - [Processor, CPU, Memory, Motherboard, Input device, Output device, Interconnects, chipset]  # [C, python]
 author_profile: false
 sidebar:
     nav: "docs"
@@ -18,61 +18,76 @@ toc_label: "On This Page"
 
 Seven main part of a computer: Processor, Memory, Motherboard, Input device, Output device, Interconnects, Chipset.
 
-* **Power supply**  
+#### Power supply
+
 	<img width="250" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137908862-b351cbc5-9ac0-408b-974c-3f795872ebcc.jpg">
 	- AC(Outlet) -> DC(Electronic products)
-	- Each component of the computer divides the voltage it needs and provides it evenly at the same time
+	- Each component of the computer divides the voltage it needs and provides it evenly at the same time  
 
-* **Processor**  
+#### Processor 
+
 	<img width="300" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137766451-95c4bb58-8e83-4c2c-aa00-702ddc432b83.jpg">
 	- Also called CPU(Central Processing Unit)
-	- Operate process(excuted program)
+	- Operate process(excuted program)  
 
-* **Memory**  
-	- Caches  
+#### Memory
+
+	- Caches
+
 	Temporary small memory to copy data ​​for quick access of in/outside CPU
 
 	- Register  
+
 	Temporary small memory to copy data ​​for fast access then cache of inside CPU 
 
 	- Main Memory  
+
 		- RAM(Random Acess Memory)  
+
 		Temporary storage memory(Volatile Memory)
 		<img width="300" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137910130-65fea509-e083-4982-931c-6a6e77dc032e.png">
 			1. DRAM(Dynamic RAM)  
 			Data is disappeared and chnaged 
 			2. SRAM(Static RAM)  
-			Data is changed with passing the time
+			Data is changed with passing the time  
 
 		- ROM(Read Only Memory)  
+
 		Non-Volatile Memory  
 		<img width="250" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137910366-b73829ea-72d8-4990-8d39-2d5f4c15fa0f.png">  
 
 	- Secondary Memory
+
 		- HDD(Hard Disk Drive)  
 		Physical storage device(slow)
+
 		- SSD(Solid State Disk)  
 		Electrically erased and reprogrammed(very fast)  
 		<img width="500" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137911466-935659fc-2819-43cb-9cf7-c5327dc90076.PNG">
 
 		- CD-ROM, DVD, FLASH
 
-* **Motherboard**  
+#### Motherboard
+
 	<img width="500" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137911970-350f58db-bdc2-440c-b2a2-74543d84225e.png">
 	- Also called mainboard
 	-  It holds and allows communication between many of the crucial electronic components of a system, such as the CPU and memory, and provides connectors for other peripherals.
 	-  the main printed circuit board (PCB) in general-purpose computers and other expandable systems.
 
-* **Input device**
+#### Input device
+
 	- Mouse, Keyboard, Camera, Pen, Touch screen, Barcode Reader, Scanner
 
-* **Ouput device**
+#### Ouput device
+
 	- Printer, Monitor, Speaker, Beam Projector
 
-* **Interconnects**
+#### Interconnects
+
 	- buses : A communication system that transfers data and information between computer communication components and between computers.
 	
-* **Chipset(Data Flow Management System)**
+#### Chipset(Data Flow Management System)
+
 	- Northbridge(Memory controller hub) : Manage communication between CPU, RAM, GQU, Southbridge, PCI express
 	- Southbridge(I/O Controller hub) : Manage for input/output with the device  
 	<img width="500" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137914656-e6f962f0-7f22-4e48-b5fc-0d6d8425443b.png">

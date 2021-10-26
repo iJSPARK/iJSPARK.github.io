@@ -1,9 +1,9 @@
 ---
-title : "KMP String Search"
+title : "Linked List"
 categories : 
-    - Algorithm
+    - Data Structure
 tag :
-    - [C, KMP Algorithm, String Search]  # [C, python]
+    - [List, Linear List, Linked List]  # [C, python]
 author_profile: false
 sidebar:
     nav: "docs"
@@ -13,12 +13,52 @@ toc_sticky: true
 toc_label: "On This Page"
 ---
 
-#### KMP compare with Brute-Force
+#### Problem of linear list
 
-KMP(Knuth-Morris-Pratt) Algorithm is that remove the unnecessary search process when search for a string.
+**Linear List**
 
-`o` is the index that the search matched, `x` is mismatch.
-ex) `ABCABD` is string to search in `ZABCABCABD`
+```c
+/* Member struct */
+typedef struct { 
+	int mem_no; // member number
+	char* name; // name
+	char* phone; // phone number
+} Person;
+
+Person data[] = {
+	{11, "Steve jobs", "111-1111-1111"},
+	{22, "Bill gates", "222-2222-2222"},
+	{66, "Da vinci", "666-6666-6666"},
+	{77, "Elon musk", "777-7777-7777"},
+	{0, "", ""},
+	{0, "", ""},
+};
+```
+
+* Before data inserting
+
+|0|1|2|3|4|5|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|11|22|66|77|0|0|
+
+* after data inserting
+
+A person with a mem_no 44 was inserted between men_no 22 and 66.
+
+|0|1|2|3|4|5|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|11|22|44|66|77|0|
+
+**Problem**
+
+1. The efficiency is not good because all data must move according to data insertion and deletion.
+2. Need to know the size of the accumulated data in advance.
+
+---
+
+#### Pointer Linked list
+
+* Linked list
 
 * Brute-Force
 
