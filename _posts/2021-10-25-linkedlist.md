@@ -34,19 +34,22 @@ Person data[] = {
 };
 ```
 
-* Before data inserting
+* Before data inserting 
 
 |0|1|2|3|4|5|
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |11|22|66|77|0|0|
 
-* after data inserting
+<br/>
 
+* after data inserting
 A person with a mem_no 44 was inserted between men_no 22 and 66.
 
 |0|1|2|3|4|5|
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |11|22|44|66|77|0|
+
+<br/>
 
 **Problem**
 
