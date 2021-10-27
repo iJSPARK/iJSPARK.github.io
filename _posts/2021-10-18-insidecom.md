@@ -178,7 +178,7 @@ Intel core i7
 * SSD()
 * 
 
-<img width="700" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137870906-5b5921ff-3667-48ed-938f-ce41443c6cfa.png"> 
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137870906-5b5921ff-3667-48ed-938f-ce41443c6cfa.png"> 
 
 **CPU : Data request in quick order(Fetch) -> Decode -> Operation**
 

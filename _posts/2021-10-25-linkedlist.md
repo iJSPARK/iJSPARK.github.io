@@ -34,7 +34,7 @@ Person data[] = {
 };
 ```
 
-* Before data inserting 
+* Before data inserting  
 
 |0|1|2|3|4|5|
 |:-:|:-:|:-:|:-:|:-:|:-:|
@@ -43,25 +43,31 @@ Person data[] = {
 <br/>
 
 * after data inserting
-A person with a mem_no 44 was inserted between men_no 22 and 66.
+A person with a mem_no 44 was inserted between men_no 22 and 66.  
 
 |0|1|2|3|4|5|
 |:-:|:-:|:-:|:-:|:-:|:-:|
-|11|22|44|66|77|0|
+|11|22|<span style="color:blue">44</span>|<span style="color:red">66</span>|<span style="color:red">77</span>|0|
 
 <br/>
 
 **Problem**
 
-1. The efficiency is not good because all data must move according to data insertion and deletion.
+1. The efficiency is not good because all data must <span style="color:red">move</span> according to data <span style="color:blue">insertion and deletion</span>.
 2. Need to know the size of the accumulated data in advance.
 
 ---
 
-#### Pointer Linked list
+#### Linked List
 
+
+
+#### Pointer Linked list
 Create node when insert to data for linked list
+
 * Linked list
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139027981-67354107-a10d-4852-ab8f-731f65cea14a.png"> 
 
 * Brute-Force
 

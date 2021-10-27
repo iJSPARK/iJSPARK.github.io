@@ -48,13 +48,12 @@ Logic gates have NOT, AND, NAND, OR, NOR, XOR, XNOR.
 |1|0|1|0|
 |1|1|0|1|
 
-<br/>
-
 Half Adder consist of XOR & AND gate.  
 The sum operation can be performed using the XOR gate.  
 The carry operation can be performed using the AND gate.  
 Subtraction can also be done using the binary complement.  
 Multiplication and division are also extensions of addition and subtraction.  
+
 **The computer processes all operations using an adder.** 
 
 That is really wonderful to me. Computer which process very complex task actually operate only with 0, 1 and addition. I read impresive the Leonardo da Vinci book by Walter Isaacson, I liked these word of Leonardo da vinci.
@@ -62,7 +61,7 @@ That is really wonderful to me. Computer which process very complex task actuall
 > _Simplicity is the ultimated sophistication._
     - Leonardo da Vinci -
 
-<br/>
+---
 
 **Full Adder**
 
