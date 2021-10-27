@@ -12,7 +12,7 @@ toc_sticky: true
 toc_label: false
 ---
 
-### 1. Processor
+### Processor
 
 <img width="300" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137766451-95c4bb58-8e83-4c2c-aa00-702ddc432b83.jpg">
 

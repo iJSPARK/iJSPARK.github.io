@@ -13,10 +13,9 @@ toc_sticky: true
 toc_label: "On This Page"
 ---
 
-### Linear List  
+#### Linear List  
 
 **Linear List made by array**
-
 ```c
 /* Member struct */
 typedef struct { 
@@ -37,18 +36,18 @@ Person data[] = {
 
 * Before data inserting  
 
-|0|1|2|3|4|5|
-|:-:|:-:|:-:|:-:|:-:|:-:|
-|11|22|66|77|0|0|
+    |0|1|2|3|4|5|
+    |:-:|:-:|:-:|:-:|:-:|:-:|
+    |11|22|66|77|0|0|
 
 <br/>
 
 * after data inserting
 A person with a mem_no 44 was inserted between men_no 22 and 66.  
 
-|0|1|2|3|4|5|
-|:-:|:-:|:-:|:-:|:-:|:-:|
-|11|22|<span style="color:blue">44</span>|<span style="color:red">66</span>|<span style="color:red">77</span>|0|
+    |0|1|2|3|4|5|
+    |:-:|:-:|:-:|:-:|:-:|:-:|
+    |11|22|<span style="color:blue">44</span>|<span style="color:red">66</span>|<span style="color:red">77</span>|0|
 
 <br/>
 
@@ -59,7 +58,7 @@ A person with a mem_no 44 was inserted between men_no 22 and 66.
 
 ---
 
-### Pointer Linked list
+#### Pointer Linked list
 Create node object when insert to data for linked list. Each node's pointer to the next node. The first node of linked list is the head node and last node is tail node. The tail node has null value.
 
 * Node object consist of data and next.
@@ -73,7 +72,6 @@ tyedef struct node {
    Member data; // data
    struct node *next; // pointer to the next node 
 } Node;
-
 ```
 
  **If delete node object when delete data, solve the problem that push and pull data.**
