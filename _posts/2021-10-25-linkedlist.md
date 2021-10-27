@@ -13,9 +13,10 @@ toc_sticky: true
 toc_label: "On This Page"
 ---
 
-### Problem of linear list  
+### Linear List  
 
-#### Linear List made by array
+**Linear List made by array**
+
 ```c
 /* Member struct */
 typedef struct { 
