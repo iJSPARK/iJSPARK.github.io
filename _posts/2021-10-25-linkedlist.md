@@ -15,7 +15,7 @@ toc_label: "On This Page"
 
 ### Problem of linear list  
 
-#### Linear List
+#### Linear List made by array
 ```c
 /* Member struct */
 typedef struct { 
@@ -59,9 +59,28 @@ A person with a mem_no 44 was inserted between men_no 22 and 66.
 ---
 
 ### Pointer Linked list
-Create node when insert to data for linked list
+Create node object when insert to data for linked list. Each node's pointer to the next node. The first node of linked list is the head node and last node is tail node. The tail node has null value.
 
-<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139035137-0e5385cd-6b8b-4bd4-9d9f-92f12ac8a3ab.png"> 
+* Node object consist of data and next.
+    1. data : member that stores data
+    2. next : pointer to a struct like itself
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139070839-10fbfd3d-482b-4caa-bcee-d48d142dc0dd.png"> 
+
+```c
+tyedef struct node {
+   Member data; // data
+   struct node *next; // pointer to the next node 
+} Node;
+
+```
+
+ **If delete node object when delete data, solve the problem that push and pull data.**
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139072078-d6614533-f007-4593-8d80-76c11f7f938d.png"> 
+
+
+
 
 * Brute-Force
 
