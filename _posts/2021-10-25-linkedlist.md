@@ -14,8 +14,8 @@ toc_label: "On This Page"
 ---
 
 #### Linear List  
+Linear List made by array
 
-**Linear List made by array**
 ```c
 /* Member struct */
 typedef struct { 
@@ -51,14 +51,14 @@ A person with a mem_no 44 was inserted between men_no 22 and 66.
 
 <br/>
 
-**Problem**
+**Problem of linear list**
 
 1. The efficiency is not good because all data must <span style="color:red">move</span> according to data <span style="color:blue">insertion and deletion</span>.
 2. Need to know the size of the accumulated data in advance.
 
 ---
 
-#### Pointer Linked list
+#### Pointer linked list
 Create node object when insert to data for linked list. Each node's pointer to the next node. The first node of linked list is the head node and last node is tail node. The tail node has null value.
 
 * Node object consist of data and next.
