@@ -13,7 +13,7 @@ toc_sticky: true
 toc_label: "On This Page"
 ---
 
-#### Linear List  
+### Linear List  
 Linear List made by array
 
 ```c
@@ -40,9 +40,7 @@ Person data[] = {
     |:-:|:-:|:-:|:-:|:-:|:-:|
     |11|22|66|77|0|0|
 
-<br/>
-
-* after data inserting
+* A-n,mfter data inserting
 A person with a mem_no 44 was inserted between men_no 22 and 66.  
 
     |0|1|2|3|4|5|
@@ -58,10 +56,10 @@ A person with a mem_no 44 was inserted between men_no 22 and 66.
 
 ---
 
-#### Pointer linked list
-Create node object when insert to data for linked list. Each node's pointer to the next node. The first node of linked list is the head node and last node is tail node. The tail node has null value.
+### Pointer linked list
+Create node type object when insert to data for linked list. Each node's pointer to the next node. The first node of linked list is the head node and last node is tail node. The tail node has null value.
 
-* Node object consist of data and next.
+* Node type object consist of data and next.
     1. data : member that stores data
     2. next : pointer to a struct like itself
 
@@ -78,6 +76,103 @@ tyedef struct node {
 
 <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139072078-d6614533-f007-4593-8d80-76c11f7f938d.png"> 
 
+
+#### Struct list mange a liked list 
+List manage a liked list, consist of two member and have point data type for node.
+
+**linked lish header file**
+```c
+/* Linked List using pointer(header) */
+#ifndef ___LinkedList
+#define ___LinkedList
+
+#include "Member.h"
+
+/*--- node ---*/
+typedef struct __node {
+	Member data;		/* data */
+	struct __node* next;	/* pointer for next node */
+} Node;
+
+/*--- linked list ---*/
+typedef struct {
+	Node* head;		/* pointer for head node */
+	Node* crnt;		/* pointer for selected node */
+} List;
+
+/*--- initialize linked list ---*/
+void Initialize(List* list);
+
+/*--- search for a node equal to x with compare function ---*/
+Node* search(List* list, const Member* x, int compare(const Member* x, const Member* y));
+
+/*--- insert a node into the head ---*/
+void InsertFront(List* list, const Member* x);
+
+/*--- insert a node into the tail ---*/
+void InsertRear(List* list, const Member* x);
+
+/*--- remove head node ---*/
+void RemoveFront(List* list);
+
+/*--- remove tail node ---*/
+void RemoveRear(List* list);
+
+/*--- remove selected node ---*/
+void RemoveCurrent(List* list);
+
+/*--- remove all nodes ---*/
+void Clear(List* list);
+
+/*--- print data of seleted node ---*/
+void PrintCurrent(const List* list);
+
+/*--- print data of all nodes in list order ---*/
+void Print(const List* list);
+
+/*--- terminate linked list ---*/
+void Terminate(List* list);
+#endif
+```
+
+**Function**
+* Create node 
+    Create node type object and return the created pointer of object.
+    ```c
+    /*--- create node dynamically ---*/
+    static Node* AllocNode(void)
+    {
+        return calloc(1, sizeof(Node));
+    }
+    ```
+
+*  Set a member value of node
+    Set the value of two member of a node type object.
+    Substitute x point to vlaue for n point to node type object.
+    Substitute passed to next as parameter for next of n.
+    ```c
+    /*--- set a value each member of node point to by n ---*/
+    static void SetNode(Node* n, const Member* x, const Node* next)
+    {
+        n->data = *x;		/* data */
+        n->next = next;		/* pointer for next node */
+    }
+    ```
+
+* Initialize linked list
+    Initialize before use linkde list.
+    Create empty linked list by substitue NULL value for head pointing to the head node. 
+    crnt pointer is the currently selected node. It's used for select and delete node searched.
+    ```c
+    /*--- initialize linked list ---*/
+    void Initialize(List* list)
+    {
+        list->head = NULL;	/* head node */
+        list->crnt = NULL;	/* selected node */
+    }
+    ```
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139237458-527be1a7-e688-4ab2-8545-66370ce48f14.png"> 
 
 
 
