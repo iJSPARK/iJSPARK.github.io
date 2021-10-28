@@ -13,7 +13,7 @@ toc_sticky: true
 toc_label: "On This Page"
 ---
 
-### Linear List  
+## Linear List  
 Linear List made by array
 
 ```c
@@ -56,7 +56,7 @@ A person with a mem_no 44 was inserted between men_no 22 and 66.
 
 ---
 
-### Pointer linked list
+## Pointer linked list
 Create node type object when insert to data for linked list. Each node's pointer to the next node. The first node of linked list is the head node and last node is tail node. The tail node has null value.
 
 * Node type object consist of data and next.
@@ -77,7 +77,7 @@ tyedef struct node {
 <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139072078-d6614533-f007-4593-8d80-76c11f7f938d.png"> 
 
 
-#### Struct list mange a liked list 
+### Struct list mange a liked list 
 List manage a liked list, consist of two member and have point data type for node.
 
 **linked lish header file**
