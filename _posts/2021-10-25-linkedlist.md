@@ -138,8 +138,7 @@ void Terminate(List* list);
 <br/>
 
 **Main function**
-* Create node 
-
+* Create node  
     Create node type object and return the created pointer of object.
 
     ```c
@@ -150,8 +149,9 @@ void Terminate(List* list);
     }
     ```
 
-*  Set a member value of node
+<br/>
 
+*  Set a member value of node  
     Set the value of two member of a node type object.  
     Substitute x point to vlaue for n point to node type object.  
     Substitute passed to next as parameter for next of n.  
@@ -165,11 +165,14 @@ void Terminate(List* list);
     }
     ```
 
-* Initialize linked list
+<br/>
 
+* Initialize linked list  
     Initialize before use linkde list.  
     Create empty linked list by substitue NULL value for head pointing to the head node.   
     crnt pointer is the currently selected node. It's used for select and delete node searched.  
+
+    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139399661-f7199682-7d2d-4359-8cae-6fc598e5677d.png"> 
 
     ```c
     /*--- initialize linked list ---*/
@@ -180,10 +183,9 @@ void Terminate(List* list);
     }
     ```
 
-<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139399661-f7199682-7d2d-4359-8cae-6fc598e5677d.png"> 
+<br/>
 
-* Searh
-
+* Searh  
     Search for nodes that match the condition.  
     Seraching is linear scan and start from head node.  
     Return value is pointer about the found node.  
@@ -210,8 +212,9 @@ void Terminate(List* list);
     }
     ```
 
-* Insert node to head 
+<br/>
 
+* Insert node to head  
     Update head node also crnt to point to the newly created node.  
     Set a value by calling SetNode function.  
     
@@ -226,8 +229,9 @@ void Terminate(List* list);
     }
     ```
 
-* Insert node to tail
+<br/>
 
+* Insert node to tail  
     * processing according to logic
         1. List is empty
             Same do that insert node to head so do as InserFront function.
@@ -252,8 +256,9 @@ void Terminate(List* list);
     }
     ```
 
-* Delete head node\
+<br/>
 
+* Delete head node  
     If list is not empty, execute deletion.  
     Update ptr pointer to second node and free memmory for head.  
     Set head to ptr pointer and crnt pointer after free.  
@@ -272,8 +277,9 @@ void Terminate(List* list);
     }
     ```
 
-* Delete tail node
+<br/>
 
+* Delete tail node  
     * Processing according to the number of nodes
         1. Node 1 quantity in list
             Same that delete head node so run RemoveFront function.
@@ -305,8 +311,9 @@ void Terminate(List* list);
     }
      ```       
 
-* Delete selected node
+<br/>
 
+* Delete selected node  
     * processing according to logic
         1. crnt is head node
             Delete the head node with RemoveFont function.
