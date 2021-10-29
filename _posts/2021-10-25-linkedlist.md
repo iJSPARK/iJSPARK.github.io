@@ -63,7 +63,7 @@ Create node type object when insert to data for linked list. Each node's pointer
     1. data : member that stores data
     2. next : pointer to a struct like itself
 
-<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139070839-10fbfd3d-482b-4caa-bcee-d48d142dc0dd.png"> 
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139399619-e5cbfd67-f281-45b5-8f34-534880b55668.png"> 
 
 ```c
 tyedef struct node {
@@ -74,13 +74,13 @@ tyedef struct node {
 
  **If delete node object when delete data, solve the problem that push and pull data.**
 
-<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139072078-d6614533-f007-4593-8d80-76c11f7f938d.png"> 
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139426745-cab9589e-5070-4037-aa9f-2c399b3da2c6.png"> 
 
 
 ### Struct list mange a liked list 
 List manage a liked list, consist of two member and have point data type for node.
 
-**linked lish header file**
+**Linked List header file**
 ```c
 /* Linked List using pointer(header) */
 #ifndef ___LinkedList
@@ -135,7 +135,7 @@ void Terminate(List* list);
 #endif
 ```
 
-**Function**
+**Main function**
 * Create node 
     Create node type object and return the created pointer of object.
     ```c
@@ -172,251 +172,299 @@ void Terminate(List* list);
     }
     ```
 
-<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139237458-527be1a7-e688-4ab2-8545-66370ce48f14.png"> 
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139399661-f7199682-7d2d-4359-8cae-6fc598e5677d.png"> 
 
+* Searh
+    Search for nodes that match the condition.
+    Seraching is linear scan and start from head node.
+    Return value is pointer about the found node.
+     * Termination condition
+        1. Don't find the node matching condition and shortly before passing tail node
+        2. Search for nodes matching condition.
 
+    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139396570-22ff3c3d-0f5f-4034-94c3-525390f9346e.png">
 
-* Brute-Force
+    ```c
+    /*--- search for a node equal to x with compare function ---*/
+    Node* search(List* list, const Member* x, int compare(const Member* x, const Member* y))
+    {
+        Node* ptr = list->head;
+        while (ptr != NULL) {
+            if (compare(&ptr->data, x) == 0) {	/* return 0 if same the key value */
+                list->crnt = ptr;
+                return ptr;		/* search sucess */
+            }
+            ptr = ptr->next;	/* select next node */
+        }
+        return NULL;		/* search fail */
+    }
+    ```
 
+* Insert node to head 
+    Update head node also crnt to point to the newly created node.
+    Set a value by calling SetNode function.
+    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139411165-900bedf4-ebcd-40dc-85ec-e700c45add9b.png">
+    ```c
+    /*--- insert a node into the head ---*/
+    void InsertFront(List* list, const Member* x)
+    {
+        Node* ptr = list->head; /* substitute pointer about head node for ptr */
+        list->head = list->crnt = AllocNode();  /* create node and insert the node to head*/
+        SetNode(list->head, x, ptr);    /* set a value of node */
+    }
+    ```
+
+* Insert node to tail
+    * processing according to logic
+        1. List is empty
+            Same do that insert node to head so do as InserFront function.
+        2. List isn't empty
+            Insert newly node to tail.
+    
+    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139427588-6854e975-cdf7-45ca-8d4b-7202d5353fa7.png">
+
+    ```c
+    /*--- insert a node into the tail ---*/
+    void InsertRear(List* list, const Member* x)
+    {
+        if (list->head == NULL)	/* is empty */
+            InsertFront(list, x);	/* insert to head */
+        else {
+            Node* ptr = list->head;
+            while (ptr->next != NULL)   /* find tail node */
+                ptr = ptr->next; 
+            ptr->next = list->crnt = AllocNode();   /* create node and insert the node to tail */
+            SetNode(ptr->next, x, NULL);    /* tail node point to noting */
+        }
+    }
+    ```
+
+* Delete head node
+    If list is not empty, execute deletion.
+    Update ptr pointer to second node and free memmory for head.
+    Set head to ptr pointer and crnt pointer after free.
+
+     <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139428395-ab26bef6-b5ad-4b8e-a2db-7efa4cacd8de.png">
+
+    ```c
+    /*--- remove head node ---*/
+    void RemoveFront(List* list)
+    {
+        if (list->head != NULL) {
+            Node* ptr = list->head->next;		/* pointer about second node */
+            free(list->head);			/* free head node */
+            list->head = list->crnt = ptr;		/* new head node */
+        }
+    }
+    ```
+
+* Delete tail node 
+    * Processing according to the number of nodes
+        1. Node 1 quantity in list
+            Same that delete head node so run RemoveFront function.
+        2. Node more than two in list
+            Decalre pre pointer that node in front of the node currently being scanned. Free memory tail node and pre pointer link to linked list.
+
+     <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139428431-0b432078-587f-46e1-918b-d7fa0556fa97.png">
+
+    ```c
+    /*--- remove tail node ---*/
+    void RemoveRear(List* list)
+    {
+        if (list->head != NULL) { /* isn't empty */
+            if ((list->head)->next == NULL)	/* node just 1 quantity */
+                RemoveFront(list);			/* delete head node */
+            else {
+                Node* ptr = list->head; /* head node */
+                Node* pre = NULL;   /* node in front of the node currently being scanned */
+                while (ptr->next != NULL) { /* find tail node */
+                    pre = ptr; //
+                    ptr = ptr->next;
+                }
+
+                pre->next = NULL;	/* in front of tail node */
+                free(ptr);		/* free tail node */
+                list->crnt = pre;   /* link to linked list */
+            }
+        }
+    }
+     ```       
+
+* Delete selected node
+    * processing according to logic
+        1. crnt is head node
+            Delete the head node with RemoveFont function.
+        2. crnt is not head node
+            Find a selected node. If terminate while loop, ptr in front of seleted node to delete. Free memory selected node and ptr pointer link to linked list.
+
+    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139428439-60913c8f-646c-4b2c-9a9d-8d4e348d2670.png">
+
+    ```c
+    /*--- remove selected node ---*/
+    void RemoveCurrent(List* list)
+    {
+        if (list->head != NULL) {
+            if (list->crnt == list->head)	/* select head node */
+                RemoveFront(list);			/* delete head node */
+            else {
+                Node* ptr = list->head;	/* head node */
+                while (ptr->next != list->crnt) /* find selected node */
+                    ptr = ptr->next;
+                ptr->next = list->crnt->next; /* ptr move next node pointer of crnt */
+                free(list->crnt); /* delete current node */
+                list->crnt = ptr; /* ptr link to linked list */
+            }
+        }
+    }
+    ````
+
+**Linked List source file**
 ```c
-/* (1) Search start */
->......... 
-ZABCABCABD
-ABCABD
-
-x.........  // mismatch
-ZABCABCABD
-ABCABD
-
-/* (2) Search start */
-.>........
-ZABCABCABD
- ABCABD
-
-.ooooox...  // mismatch
-ZABCABCABD
- ABCABD
-
-/* (3) Search start */
-..>.......
-ZABCABCABD
-  ABCABD
-```
-
-<br/>
-
-* KMP
-
-```c
-/* (1) Search start */
->......... 
-ZABCABCABD
-ABCABD
-
-x.........  // mismatch
-ZABCABCABD
-ABCABD
-
-/* (2) Search start */
-.>........
-ZABCABCABD
- ABCABD
-
-.ooooox...  // mismatch
-ZABCABCABD
- ABCABD
-
-/* (3) Search start */
-..skip>...  // skip 'AB' and start a search from 'C'
-ZABCABCABD
-    ABCABD
-```
-
-Brute-Force compare in order one by one. On the other hand, kmp is skiped `AB` of `ABCABD` and start a search from `C` in (2) of code above after mismatched in (2). 
-
-**How can skip in KMP algorithm?**  
-
-Look at step (2) in the code above.
-Characters are matched up to `ABCAB` of `ABCABD`, `AB` is searched repeatly in `ABCAB`.
-
-Look at step (3) in the code above.
-Skip characters `AB` is reapted and start search.
-
----
-
-#### KMP implementation
-
-Parttern is string to search in text
-
-1. In order to implement KMP, if there is mismatched in the process of searching for pattern in the string text, it need to know the location of the pattern to be searched again. However it is inefficient to get a location for everytime, so need to create a table in which the location is stored in advance. Therefore create `skip table`.
-
-2. Need to get repeatly character. To do this, need to use the concept of prefix and suffix.
-
-|0|1|2|3|4|5|
-|:-:|:-:|:-:|:-:|:-:|:-:|
-|<span style="color:red">A</span>|<span style="color:red">B</span>|C|<span style="color:blue">A</span>|<span style="color:blue">B</span>|D|
-
-Pattern : <span style="color:red">AB</span>C<span style="color:blue">AB</span>D  
-Prefix : <span style="color:red">AB</span>  
-Suffix : <span style="color:blue">AB</span>  
-Text : ZABCABCABD
-
-(1) Characters are matched up to 'ABCAB' of 'ABCABD' and mismatched at 7 index  
-
-|0|1|2|3|4|5|6|7|8|9|  
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|  
-|Z|<span style="color:green">A</span>|<span style="color:green">B</span>|<span style="color:green">C</span>|<span style="color:green">A</span>|<span style="color:green">B</span>|<span style="color:red">C</span>|A|B|D|  
-||<span style="color:green">A</span>|<span style="color:green">B</span>|<span style="color:green">C</span>|<span style="color:green">A</span>|<span style="color:green">B</span>|<span style="color:red">C</span>||||
-
-(2) Skip 'AB' and start a search from 'C'  
-
-|0|1|2|3|4|5|6|7|8|9|  
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|Z|A|B|C|<span style="color:green">A</span>|<span style="color:green">B</span>|C|A|B|D|
-|||||<span style="color:green">A</span>|<span style="color:green">B</span>|C|A|B|D|
-
-Look at step (1) in the code above. <span style="color:blue">AB</span> of text(ZABC<span style="color:blue">AB</span>CABD) and suffix(<span style="color:blue">AB</span>) of pattern(ABC<span style="color:blue">AB</span>D) overlap. Then <span style="color:red">AB</span> of pattern(<span style="color:red">AB</span>CABD) move to <span style="color:blue">AB</span> of text(ZABC<span style="color:blue">AB</span>CABD) in (2).
-
-|0|1|2|3|4|5|6|7|8|9|  
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|Z|A|B|C|<span style="color:blue">A</span>|<span style="color:blue">B</span>|C|A|B|D|
-|||||<span style="color:red">A</span>|<span style="color:red">B</span>|C|A|B|D| 
-
-<span style="color:blue">AB</span> of text(ZABC<span style="color:blue">AB</span>CABD) is like suffix(<span style="color:blue">AB</span>) of pattern(ABC<span style="color:blue">AB</span>D). In conclusion, prefix(<span style="color:red">AB</span>) of pattern(<span style="color:red">AB</span>CABD) and suffix(<span style="color:blue">AB</span>) of pattern('ABC<span style="color:blue">AB</span>D') overlap. Therefore, the KMP algorithm should be implemented using the prefix and suffix of the string pattern to be searched.
-
----
-
-#### Skip table creation
-
-In order to create a skip table, using the prefix and surfix.
-After overlapping the two strings pat one index back, the search is started. Then the number of matching characters is stored in the skip table.
-
-(1)
-```c
--x....
-ABCABD
- ABCABD
-```
-**skip table**  
-
-|A|B|C|A|B|D|
-|:-:|:-:|:-:|:-:|:-:|:-:|
-|-|0|||||
-
-<br/>
-
-(2)
-```c
--.x...
-ABCABD
-  ABCABD
-```
-**skip table**  
-
-|A|B|C|A|B|D|
-|:-:|:-:|:-:|:-:|:-:|:-:|
-|-|0|0||||
-
-<br/>
-
-(3)
-```c
--..o..
-ABCABD
-   ABCABD
-
--..oo.
-ABCABD
-   ABCABD
-
--..oox
-ABCABD
-   ABCABD
-```
-**skip table**  
-
-|A|B|C|A|B|D|
-|:-:|:-:|:-:|:-:|:-:|:-:|
-|-|0|0|1|2|0|
-
-In (1) and (2), there is no overlapping character, so 0 is stored.
-In (3), `A` matches and stores 1, and `B` matches and stores 2 continuously. And `C` is mismatched, so 0 is stored. 
-
-In this way, when searching for a pattern in the text, if the characters do not match, get the location (index) to search again by accessing the skip table.
-
-----
-
-#### KMP algorithm code
-
-```c
-#pragma warning (disable:4996)
+/* Linked List using pointer(source) */
 #include <stdio.h>
+#include <stdlib.h>
+#include "Member.h"
+#include "LinkedList.h"
 
-/*--- Search pat in txt ---*/
-int kmp_match(const char txt[], const char pat[]) 
+/*--- create node dynamically ---*/
+static Node* AllocNode(void)
 {
-	int pt = 1; // txt cursor
-	int pp = 0; // pat cursor
-	int skip[1024]; // Store where to start scanning again as many as the prefix and suffix of pat match.
+	return calloc(1, sizeof(Node));
+}
 
-	/* Scanning character be reapted of pat(prefix, suffix), set skip table */
-	while (pat[pt] != '\0') {
-		if (pat[pt] == pat[pp]) // character match
-			skip[pt++] = ++pp; // save the location that searh to start
-		else if (pp == 0) // to scan first character
-			skip[pt++] = pp; // save 0 in skip and move to next character
-		else // character mismatch
-			pp = skip[pp - 1]; // Where to start the search
-	}
+/*--- set a value each member of node point to by n ---*/
+static void SetNode(Node* n, const Member* x, const Node* next)
+{
+	n->data = *x;		/* data */
+	n->next = next;		/* pointer for next node */
+}
 
+/*--- initialize linked list ---*/
+void Initialize(List* list)
+{
+	list->head = NULL;	/* head node */
+	list->crnt = NULL;	/* selected node */
+}
 
-	/* search pat in txt */
-	pt = pp = 0; // initialization txt cursor, pat cursor
-	while (txt[pt] != '\0' && pat[pp] != '\0') {
-		if (txt[pt] == pat[pp]) {  // character match
-			pt++;  pp++; // move next character(two cursor each 1 index)
+/*--- search for a node equal to x with compare function ---*/
+Node* search(List* list, const Member* x, int compare(const Member* x, const Member* y))
+{
+	Node* ptr = list->head;
+	while (ptr != NULL) {
+		if (compare(&ptr->data, x) == 0) {	/* same the key value */
+			list->crnt = ptr;
+			return ptr;			/* search sucess */
 		}
-		else if (pp == 0) // search of pat from first character
-			pt++; // next pt cursor 
-		else
-			pp = skip[pp - 1]; // Where to start the search
+		ptr = ptr->next;			/* select next node */
 	}
-
-	if (pat[pp] == '\0') // pat matching complete
-		return pt - pp; // Returns the index at which the match starts 
-
-	return -1; // mismatch
+	return NULL;					/* search fail */
 }
 
-int main(void)
+/*--- insert a node into the head ---*/
+void InsertFront(List* list, const Member* x)
 {
-	int idx;
-	char str1[256];		// txt 
-	char str2[256];		// pat 
-
-	puts("KMP");
-	printf("Text : ");
-	scanf("%s", str1);
-	printf("pattern : ");
-	scanf("%s", str2);
-
-	idx = kmp_match(str1, str2);	
-	
-	if (idx == -1)
-		puts("There is no patten in text");
-	else
-		printf("Match from the %dth character.\n", idx + 1);
-
-	return 0;
+	Node* ptr = list->head; /* substitute pointer about head node for ptr */
+	list->head = list->crnt = AllocNode(); /* create node and insert the node to head*/
+	SetNode(list->head, x, ptr); /* set a value of node */
 }
 
+/*--- insert a node into the tail ---*/
+void InsertRear(List* list, const Member* x)
+{
+	if (list->head == NULL)		/* is empty */
+		InsertFront(list, x);	/* insert to head */
+	else {
+		Node* ptr = list->head;
+		while (ptr->next != NULL) /* find tail node */
+			ptr = ptr->next; 
+		ptr->next = list->crnt = AllocNode(); /* create node and insert the node to tail */
+		SetNode(ptr->next, x, NULL); /* tail node point to noting */
+	}
+}
+
+/*--- remove head node ---*/
+void RemoveFront(List* list)
+{
+	if (list->head != NULL) {
+		Node* ptr = list->head->next;		/* pointer about second node */
+		free(list->head);			/* free head node */
+		list->head = list->crnt = ptr;		/* new head node */
+	}
+}
+
+/*--- remove tail node ---*/
+void RemoveRear(List* list)
+{
+	if (list->head != NULL) {   /* isn't empty */
+		if ((list->head)->next == NULL) /* node just 1 quantity */
+			RemoveFront(list);	/* delete head node */
+		else {
+			Node* ptr = list->head; /* head node */
+			Node* pre = NULL;   /* node in front of the node currently being scanned */
+			while (ptr->next != NULL) { /* find tail node */
+				pre = ptr; 
+				ptr = ptr->next;
+			}
+
+			pre->next = NULL;	/* in front of tail node */
+			free(ptr);		   /* free tail node */
+			list->crnt = pre;       /* connect linked list */
+		}
+	}
+}
+
+/*--- remove selected node ---*/
+void RemoveCurrent(List* list)
+{
+	if (list->head != NULL) {
+		if (list->crnt == list->head)   /* select head node */
+			RemoveFront(list);	/* delete head node */
+		else {
+			Node* ptr = list->head;	/* head node */
+			while (ptr->next != list->crnt) /* find selected node */
+				ptr = ptr->next;
+			ptr->next = list->crnt->next; /* ptr move next node pointer of crnt */
+			free(list->crnt); /* delete current node */
+			list->crnt = ptr; /* ptr link to linked list */
+		}
+	}
+}
+
+/*--- remove all nodes ---*/
+void Clear(List* list)
+{
+	while (list->head != NULL)		/* until empty */
+		RemoveFront(list);		/* delete head node */
+	list->crnt = NULL;
+}
+
+/*--- print data of seleted node ---*/
+void PrintCurrent(const List* list)
+{
+	if (list->crnt == NULL)
+		printf("There is no node.");
+	else
+		PrintMember(&list->crnt->data);
+}
+
+/*--- print data of all nodes in list order ---*/
+void Print(const List* list)
+{
+	if (list->head == NULL)
+		puts("There are no nodes.");
+	else {
+		Node* ptr = list->head;
+		puts("【 View all 】");
+		while (ptr != NULL) {
+			PrintLnMember(&ptr->data);
+			ptr = ptr->next;	/* select rear node */
+		}
+	}
+}
+
+/*--- terminate linked list ---*/
+void Terminate(List* list)
+{
+	Clear(list);	v/* delete all node */
+}
 ```
-
----
-
-#### Big-O
-
-* Time complexity : O(n)
-* Space complexity : O(n)
-
-If string length of text is n and length of pattern is m, In Brute-Force, the worst case time complexity is O(mn). KMP to reduce the number of comparisons significantly. Even in the worst case, KMP compares as much as text length, and the time complexity is O(m + n), which is usually O(n), considering that m ≥ n. In terms of memory, skip table requires m more memory. 
