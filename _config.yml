@@ -16,17 +16,17 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Junseo Park's Note"
+title                    : "Mac donald's ketchup"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Junseo Park's Note"
+name                     : "Mac donald's ketchup"
 description              : "Fun, iOS, Network, OS, Algorithms, DS, Computer Architecture"
 url                      : "https://ijspark.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "https://github.com/iJSPARK/iJSPARK.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : "Junseo Park's Note"
+masthead_title           : "Mac donald's ketchup"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
@@ -101,7 +101,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "Mac Donald Ketchap"
+  name             : "Ketchap"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Learn with curiosity"
   location         : "Republic of korea"
