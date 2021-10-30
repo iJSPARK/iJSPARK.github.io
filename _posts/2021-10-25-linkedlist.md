@@ -40,7 +40,7 @@ Person data[] = {
     |:-:|:-:|:-:|:-:|:-:|:-:|
     |11|22|66|77|0|0|
 
-* A-n,mfter data inserting
+* After data inserting
 A person with a mem_no 44 was inserted between men_no 22 and 66.  
 
     |0|1|2|3|4|5|
@@ -56,7 +56,7 @@ A person with a mem_no 44 was inserted between men_no 22 and 66.
 
 ---
 
-## Pointer linked list
+## Linked List using pointer
 Create node type object when insert to data for linked list. Each node's pointer to the next node. The first node of linked list is the head node and last node is tail node. The tail node has null value.
 
 * Node type object consist of data and next.
@@ -74,7 +74,7 @@ tyedef struct node {
 
  **If delete node object when delete data, solve the problem that push and pull data.**
 
-<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139426745-cab9589e-5070-4037-aa9f-2c399b3da2c6.png"> 
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523058-0f51d7c1-3260-4ae4-a430-d70f1fd17b0c.png"> 
 
 
 ### Struct list mange a liked list 
@@ -218,7 +218,7 @@ void Terminate(List* list);
     Update head node also crnt to point to the newly created node.  
     Set a value by calling SetNode function.  
     
-    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139411165-900bedf4-ebcd-40dc-85ec-e700c45add9b.png">
+    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523150-95260178-04a7-42f7-b9a5-b4cb5106bb46.png">
     ```c
     /*--- insert a node into the head ---*/
     void InsertFront(List* list, const Member* x)
@@ -238,7 +238,7 @@ void Terminate(List* list);
         2. List isn't empty
             Insert newly node to tail.
     
-    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139427588-6854e975-cdf7-45ca-8d4b-7202d5353fa7.png">
+    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523081-4159c9cd-e277-486b-8672-2754a531dc12.png">
 
     ```c
     /*--- insert a node into the tail ---*/
@@ -263,7 +263,7 @@ void Terminate(List* list);
     Update ptr pointer to second node and free memmory for head.  
     Set head to ptr pointer and crnt pointer after free.  
 
-     <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139428395-ab26bef6-b5ad-4b8e-a2db-7efa4cacd8de.png">
+     <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523083-17f7729b-da0d-469a-920f-c2a8c8344ab9.png">
 
     ```c
     /*--- remove head node ---*/
@@ -286,7 +286,7 @@ void Terminate(List* list);
         2. Node more than two in list
             Decalre pre pointer that node in front of the node currently being scanned. Free memory tail node and pre pointer link to linked list.
 
-     <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139428431-0b432078-587f-46e1-918b-d7fa0556fa97.png">
+     <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523088-fe8746c0-ff3f-4500-a0e7-6c9f56182434.png">
 
     ```c
     /*--- remove tail node ---*/
@@ -309,7 +309,7 @@ void Terminate(List* list);
             }
         }
     }
-     ```       
+    ```       
 
 <br/>
 
@@ -320,7 +320,7 @@ void Terminate(List* list);
         2. crnt is not head node
             Find a selected node. If terminate while loop, ptr in front of seleted node to delete. Free memory selected node and ptr pointer link to linked list.
 
-    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139428439-60913c8f-646c-4b2c-9a9d-8d4e348d2670.png">
+    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523092-ddc134bd-18d9-4803-b90b-95043c3b7515.png">
 
     ```c
     /*--- remove selected node ---*/
@@ -493,3 +493,20 @@ void Terminate(List* list)
 	Clear(list);	v/* delete all node */
 }
 ```
+
+-------
+
+## Linked List using cursor
+Linked list using pointer needs to allocate and free memory whenever node insert or delete. This cost is never small. If programmer can know in advance the maximum value of the number of data and the number of data does not change significantly, can operate efficiently using array with index. The index that acts as a pointer is called a cursor.
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139524347-d762ff3a-d204-450f-b17a-fb8f7a775212.png">
+
+Linked list using curosr need to make an array of sufficient size by calculating in advance the maximum value of the number of data.
+The cursor value of array is the index containing the next node.
+The cursor of tail node value set -1, can not exist as array index.
+The value of head have 1, index of array containing head node A because of head that represents head node is cursor. In this way, no need to move data when insert or delete.
+
+* insert into head
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139524351-9fce8e89-1db9-4c46-bf3c-7b326abd165c.png">
+
+    Update 1 to 3 in head and subtitue 1 for node D.
