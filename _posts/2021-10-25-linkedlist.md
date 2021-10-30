@@ -285,7 +285,7 @@ void Terminate(List* list);
             Same that delete head node so run RemoveFront function.
         2. Node more than two in list
             Decalre pre pointer that node in front of the node currently being scanned. Free memory tail node and pre pointer link to linked list.
-
+            
      <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523088-fe8746c0-ff3f-4500-a0e7-6c9f56182434.png">
 
     ```c
@@ -507,6 +507,7 @@ The cursor of tail node value set -1, can not exist as array index.
 The value of head have 1, index of array containing head node A because of head that represents head node is cursor. In this way, no need to move data when insert or delete.
 
 * insert into head
-<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139524351-9fce8e89-1db9-4c46-bf3c-7b326abd165c.png">
+<img width="1000" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139524351-9fce8e89-1db9-4c46-bf3c-7b326abd165c.png">
 
-    Update 1 to 3 in head and subtitue 1 for node D.
+    Update 1 to 3 in head and substitue 1 for node D.
+
