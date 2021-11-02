@@ -140,15 +140,6 @@ void RemoveCurrent(List* list);
 
 /*--- remove all nodes ---*/
 void Clear(List* list);
-
-/*--- print data of seleted node ---*/
-void PrintCurrent(const List* list);
-
-/*--- print data of all nodes in list order ---*/
-void Print(const List* list);
-
-/*--- terminate linked list ---*/
-void Terminate(List* list);
 #endif
 ```
 
