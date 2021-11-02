@@ -18,8 +18,6 @@ toc_label: "On This Page"
 
 Seven main part of a computer: Processor, Memory, Motherboard, Input device, Output device, Interconnects, Chipset.
 
-<br/>
-
 ### Power supply
 
 <img width="250" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137908862-b351cbc5-9ac0-408b-974c-3f795872ebcc.jpg">  
