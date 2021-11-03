@@ -8,6 +8,9 @@ author_profile: false
 sidebar:
     nav: "docs"
 use_math: true
+toc: true # 목차
+toc_sticky: true
+toc_label: "On This Page"
 ---
 
 ## Linear List  
