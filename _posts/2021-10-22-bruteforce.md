@@ -12,7 +12,7 @@ toc_sticky: true
 toc_label: "On This Page"
 ---
 
-#### Brute-Force, a simple string search
+### Brute-Force, a simple string search
 
 How to crack(search) a password by substituting all possible strings one by one.
 
@@ -69,8 +69,9 @@ ABABCDEFG
 
 ---
 
-#### Program that search for pattern in text using Brute-Force
+### Program using Brute-Force
 
+Let's make a program that search for pattern in text using Brute-Force.
 `txt` of bf_match function is text and `pat` is called pattern.  
 If search match, it returns the first matched index of `txt` and otherwise it returns -1.
 
@@ -125,7 +126,7 @@ int main(void)
 
 ----
 
-#### Big-O
+### Big-O
 * Time complexity : O(mn)
 * Space complexity : O(n)
 

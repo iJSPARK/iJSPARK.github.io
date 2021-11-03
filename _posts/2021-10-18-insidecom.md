@@ -103,7 +103,9 @@ Seven main part of a computer: Processor, Memory, Motherboard, Input device, Out
 
 - **buses** : A communication system that transfers data and information between computer communication components and between computers.
 	
-### Chipset(Data Flow Management System)
+### Chipset
+
+**Chipset is data flow management system**
 
 <img width="500" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137914656-e6f962f0-7f22-4e48-b5fc-0d6d8425443b.png">
 
