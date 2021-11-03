@@ -40,6 +40,8 @@ Person data[] = {
     |:-:|:-:|:-:|:-:|:-:|:-:|
     |11|22|66|77|0|0|
 
+---
+
 * After data inserting
 A person with a mem_no 44 was inserted between men_no 22 and 66.  
 
@@ -47,14 +49,12 @@ A person with a mem_no 44 was inserted between men_no 22 and 66.
     |:-:|:-:|:-:|:-:|:-:|:-:|
     |11|22|<span style="color:blue">44</span>|<span style="color:red">66</span>|<span style="color:red">77</span>|0|
 
-<br/>
-
 **Problem of linear list**
 
 1. The efficiency is not good because all data must <span style="color:red">move</span> according to data <span style="color:blue">insertion and deletion</span>.
 2. Need to know the size of the accumulated data in advance.
 
----
+<br/>
 
 ## Linked List using pointer
 Linear list problems can be solved using linked lists. Create node type object when insert to data for linked list. Each node's next pointer to the next node. The first node of linked list is the head node and last node is tail node. The tail node has null value.
@@ -63,8 +63,6 @@ Linear list problems can be solved using linked lists. Create node type object w
     1. data : member that stores data
     2. next : pointer to a struct like itself
 
-<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139399619-e5cbfd67-f281-45b5-8f34-534880b55668.png"> 
-
 ```c
 tyedef struct node {
    Member data; // data
@@ -72,7 +70,7 @@ tyedef struct node {
 } Node;
 ```
 
-<br/>
+---
 
 Struct Member in Node be used as data in any form.
 ```c
@@ -82,7 +80,7 @@ typedef struct {
 } Member;
 ```
 
-<br/>
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139399619-e5cbfd67-f281-45b5-8f34-534880b55668.png"> 
 
  **If delete node object when delete data, solve the problem that push and pull data.**
 
@@ -147,8 +145,6 @@ void Clear(List* list);
 #endif
 ```
 
-<br/>
-
 ### Main function
 
 * **Initialize linked list**
@@ -167,7 +163,7 @@ void Clear(List* list);
     }
     ```
 
-<br/>
+---
 
 * **Create node**  
     Create node type object and return the created pointer of object.
@@ -180,7 +176,7 @@ void Clear(List* list);
     }
     ```
 
-<br/>
+---
 
 *  **Set a member value of node** 
     Set the value of two member of a node type object.  
@@ -196,7 +192,7 @@ void Clear(List* list);
     }
     ```
 
-<br/>
+---
 
 * **Searh node**
     Search for nodes that match the condition.  
@@ -225,7 +221,7 @@ void Clear(List* list);
     }
     ```
 
-<br/>
+---
 
 * **Insert node to head**  
     Update head node and crnt to point to the newly created node.  
@@ -243,7 +239,7 @@ void Clear(List* list);
     }
     ```
 
-<br/>
+---
 
 * **Insert node to tail** 
     * Processing according to logic
@@ -270,7 +266,7 @@ void Clear(List* list);
     }
     ```
 
-<br/>
+---
 
 * **Delete head node** 
     If list is not empty, execute deletion.  
@@ -291,7 +287,7 @@ void Clear(List* list);
     }
     ```
 
-<br/>
+---
 
 * **Delete tail node**  
     * Processing according to the number of nodes
@@ -326,7 +322,7 @@ void Clear(List* list);
     }
     ```       
 
-<br/>
+---
 
 * **Delete selected node**  
     * Processing according to logic
@@ -357,7 +353,7 @@ void Clear(List* list);
     }
     ````
 
-<br/>
+---
 
 **Linked List source file**
 ```c
