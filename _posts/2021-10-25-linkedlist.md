@@ -14,7 +14,7 @@ toc_label: "On This Page"
 ---
 
 ## Linear List  
-Linear List made by array
+Linear List made by array 
 
 ```c
 /* Member struct */
@@ -57,7 +57,7 @@ A person with a mem_no 44 was inserted between men_no 22 and 66.
 ---
 
 ## Linked List using pointer
-Create node type object when insert to data for linked list. Each node's next pointer to the next node. The first node of linked list is the head node and last node is tail node. The tail node has null value.
+Linear list problems can be solved using linked lists. Create node type object when insert to data for linked list. Each node's next pointer to the next node. The first node of linked list is the head node and last node is tail node. The tail node has null value.
 
 * Node type object consist of data and next.
     1. data : member that stores data
@@ -72,8 +72,9 @@ tyedef struct node {
 } Node;
 ```
 
-Struct Member in Node be used as data in any form.
+<br/>
 
+Struct Member in Node be used as data in any form.
 ```c
 typedef struct {
     // data_type x;
@@ -81,11 +82,13 @@ typedef struct {
 } Member;
 ```
 
+<br/>
+
  **If delete node object when delete data, solve the problem that push and pull data.**
 
 <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523058-0f51d7c1-3260-4ae4-a430-d70f1fd17b0c.png">
 
-### Struct List mange a liked list 
+### Struct List mange a linked list 
 List manage a liked list, consist of two member and have point data type for node.
 
 ```c
@@ -95,6 +98,7 @@ typedef struct {
 	Node* crnt;	/* pointer for selected node */
 } List;
 ```
+
 <br/>
 
 **Linked List header file**
@@ -145,10 +149,10 @@ void Clear(List* list);
 
 <br/>
 
-**Main function**
+### Main function
 
-* Initialize linked list  
-    Initialize before use linkde list.  
+* **Initialize linked list**
+    Initialize before use linked list.  
     Create empty linked list by substitue NULL value for head pointing to the head node.   
     crnt pointer is the currently selected node. It's used for select and delete node searched.  
 
@@ -165,7 +169,7 @@ void Clear(List* list);
 
 <br/>
 
-* Create node  
+* **Create node**  
     Create node type object and return the created pointer of object.
     This function only run in this source file when insert node. Therefore make it a static function.
     ```c
@@ -178,7 +182,7 @@ void Clear(List* list);
 
 <br/>
 
-*  Set a member value of node  
+*  **Set a member value of node** 
     Set the value of two member of a node type object.  
     Substitute x point to vlaue for n point to new node type object.  
     Substitute passed to next as parameter for new node type object.   
@@ -194,7 +198,7 @@ void Clear(List* list);
 
 <br/>
 
-* Searh node
+* **Searh node**
     Search for nodes that match the condition.  
     Seraching is linear scan and start from head node.  
     Return value is pointer about the found node.  
@@ -223,7 +227,7 @@ void Clear(List* list);
 
 <br/>
 
-* Insert node to head  
+* **Insert node to head**  
     Update head node and crnt to point to the newly created node.  
     Set a value by calling SetNode function.  
     
@@ -241,7 +245,7 @@ void Clear(List* list);
 
 <br/>
 
-* Insert node to tail  
+* **Insert node to tail** 
     * Processing according to logic
         1. List is empty
             Same do that insert node to head so do as InserFront function.
@@ -268,7 +272,7 @@ void Clear(List* list);
 
 <br/>
 
-* Delete head node  
+* **Delete head node** 
     If list is not empty, execute deletion.  
     Update ptr pointer to second node and free memory for head.  
     Set head to ptr pointer and crnt pointer after free.  
@@ -289,12 +293,13 @@ void Clear(List* list);
 
 <br/>
 
-* Delete tail node  
+* **Delete tail node**  
     * Processing according to the number of nodes
         1. Node 1 quantity in list
             Same that delete head node so run RemoveFront function.
         2. Node more than two in list
-            Decalre pre pointer that node in front of the node currently being scanned. Free memory tail node and pre pointer link to linked list.
+            <span style='background-color: #dcffe4'>The node in front of the tail node must have a NULL value as the next value.</span> Therfore decalre pre pointer that node in front of the node currently being scanned.
+                                   Update crnt node in fornt of deleting node.
             
      <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523088-fe8746c0-ff3f-4500-a0e7-6c9f56182434.png">
 
@@ -315,7 +320,7 @@ void Clear(List* list);
 
                 pre->next = NULL;	/* in front of tail node */
                 free(ptr);		/* free tail node */
-                list->crnt = pre;   /* link to linked list */
+                list->crnt = pre;   /* update crnt node in fornt of deleting node */
             }
         }
     }
@@ -323,12 +328,13 @@ void Clear(List* list);
 
 <br/>
 
-* Delete selected node  
+* **Delete selected node**  
     * Processing according to logic
         1. crnt is head node
             Delete the head node with RemoveFont function.
         2. crnt is not head node
-            Find a selected node. If terminate while loop, ptr in front of seleted node to delete. Free memory selected node and update crnt point to node in fornt of delted node(ptr).
+             <span style='background-color: #dcffe4'>Find a selected node and ptr pointer link to next node of crnt.</span> 
+             Free memory selected node and update crnt point to node in fornt of deleted node(ptr).
 
     <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523092-ddc134bd-18d9-4803-b90b-95043c3b7515.png">
 
@@ -477,7 +483,7 @@ void Clear(List* list)
 -------
 
 ## Linked List using cursor
-Linked list using pointer needs to allocate and free memory whenever node insert or delete. This cost is never small. If programmer can know in advance the maximum value of the number of data and the number of data does not change significantly, can operate efficiently using array with index. The index that acts as a pointer is called a cursor.
+**Linked list using pointer needs to allocate and free memory whenever node insert or delete. This cost is never small.** <span style='background-color: #dcffe4'>If programmer can know in advance the maximum value of the number of data and the number of data does not change significantly, can operate efficiently using array with index.</span>  The index that acts as a pointer is called a cursor.
 
 <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139524347-d762ff3a-d204-450f-b17a-fb8f7a775212.png">
 
@@ -486,15 +492,45 @@ The cursor value of array is the index containing the next node.
 The cursor of tail node value set -1, can not exist as array index.
 The value of head have 1, index of array containing head node A because of head that represents head node is cursor. In this way, no need to move data when insert or delete.
 
-* insert into head
-<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139524351-9fce8e89-1db9-4c46-bf3c-7b326abd165c.png">
+* **Insert into head**
+    Update 1 to 3 in head and substitue 1 for node D.  
 
-    Update 1 to 3 in head and substitue 1 for node D.
+    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139524351-9fce8e89-1db9-4c46-bf3c-7b326abd165c.png">
+    
 
-### processing emptied elemnet of array
-Using cursor way have a problem when to delete. It occurs emptied memory so need to manage deleted node.
+* **Delete Node**
+    Have an array, size 5. It has problem that occurs emptied memory.
+    Frequent deletions is occur memory waste. <span style='background-color: #dcffe4'>To avoid wasting memory put in deleted and empty node when insert data.</span>
+
+    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/140018609-e9a4c45b-643d-4509-9c8a-1ef7ff76753d.png">
+
+    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/140018734-4c9857d0-a314-4a64-a2a0-a2df7d9e3912.png">
 
 <br/>
+
+### Free List
+**Processing emptied elemnet of array**
+Using cursor way have a problem when to delete. It occurs emptied memory so need to manage deleted node. Free list is data structure to manage deleted node. Linked list sequence and array sequence in order to distinguish, Node in nth index of array called record. 
+
+**Add member in Node structure**
+* Dnext
+Cursor pointing to next node of free list
+
+**Add member in structure List that mamaging linked list.**
+*  deleted
+Cursor pointing to head node of free list.
+
+* max
+Record number of tail node in array.
+
+
+ <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/140049199-bb3d14cc-9df0-4c86-8f0a-40cbc2da5823.png">
+ <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/140049208-ab26e1b3-06b5-482b-9c3c-5942437f511b.png">
+
+
+<br/>
+
+
 
 **Array Linked List header file**
 
