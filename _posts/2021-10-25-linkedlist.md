@@ -88,7 +88,7 @@ typedef struct {
 
 <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523058-0f51d7c1-3260-4ae4-a430-d70f1fd17b0c.png">
 
-### Struct List mange a linked list 
+### Struct List
 List manage a liked list, consist of two member and have point data type for node.
 
 ```c
