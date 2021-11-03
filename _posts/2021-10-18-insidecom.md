@@ -13,13 +13,11 @@ toc_label: "On This Page"
 ---
 
 ## Inside a computer
-
 <img width="500" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137689774-4bdf1632-913e-4272-a846-c7e8ad052c39.PNG">
 
 Seven main part of a computer: Processor, Memory, Motherboard, Input device, Output device, Interconnects, Chipset.
 
 ### Power supply
-
 <img width="250" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137908862-b351cbc5-9ac0-408b-974c-3f795872ebcc.jpg">  
 
 - AC(Outlet) -> DC(Electronic products)
@@ -28,7 +26,6 @@ Seven main part of a computer: Processor, Memory, Motherboard, Input device, Out
 <br/>
 
 ### Processor 
-
 <img width="300" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137766451-95c4bb58-8e83-4c2c-aa00-702ddc432b83.jpg">
 
 - Also called CPU(Central Processing Unit)
@@ -37,7 +34,6 @@ Seven main part of a computer: Processor, Memory, Motherboard, Input device, Out
 <br/>
 
 ### Memory
-
 - #### Caches
 	Temporary small memory to copy data ​​for quick access of in/outside CPU
 
@@ -45,7 +41,6 @@ Seven main part of a computer: Processor, Memory, Motherboard, Input device, Out
 	Temporary small memory to copy data ​​for fast access then cache of inside CPU  
 
 - #### Main Memory
-
 	- **RAM(Random Acess Memory)** 
 	Temporary storage memory(Volatile Memory)
 	<img width="300" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137910130-65fea509-e083-4982-931c-6a6e77dc032e.png">
@@ -57,13 +52,13 @@ Seven main part of a computer: Processor, Memory, Motherboard, Input device, Out
 	<br/>
 
 	- **ROM(Read Only Memory)**
-	<img width="250" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137910366-b73829ea-72d8-4990-8d39-2d5f4c15fa0f.png">  
-	Non-Volatile Memory 
+		<img width="250" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137910366-b73829ea-72d8-4990-8d39-2d5f4c15fa0f.png"> 
+		
+		Non-Volatile Memory 
 
 <br/>
 
 - #### Secondary Memory
-
 	<img width="500" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137911466-935659fc-2819-43cb-9cf7-c5327dc90076.PNG">
 
 	- **HDD(Hard Disk Drive)**  
@@ -78,7 +73,6 @@ Seven main part of a computer: Processor, Memory, Motherboard, Input device, Out
 <br/>
 
 ### Motherboard
-
 <img width="500" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137911970-350f58db-bdc2-440c-b2a2-74543d84225e.png">
 
 - Also called mainboard
@@ -88,23 +82,15 @@ Seven main part of a computer: Processor, Memory, Motherboard, Input device, Out
 <br/>
 
 ### Input device
-
 - Mouse, Keyboard, Camera, Pen, Touch screen, Barcode Reader, Scanner
 
-<br/>
-
 ### Ouput device
-
 - Printer, Monitor, Speaker, Beam Projector
 
-<br/>
-
 ### Interconnects
-
 - **buses** : A communication system that transfers data and information between computer communication components and between computers.
 	
 ### Chipset
-
 **Chipset is data flow management system**
 
 <img width="500" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137914656-e6f962f0-7f22-4e48-b5fc-0d6d8425443b.png">
@@ -115,7 +101,6 @@ Seven main part of a computer: Processor, Memory, Motherboard, Input device, Out
 <br/>
 
 #### Memory
-
 * Staroge program and data
 * Register, Caches, HDD, CD-ROM, DVD, ROM, FLASH
 * RAM()
