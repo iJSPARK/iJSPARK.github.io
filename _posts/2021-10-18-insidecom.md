@@ -15,7 +15,8 @@ toc_label: "On This Page"
 ## Inside a computer
 <img width="500" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137689774-4bdf1632-913e-4272-a846-c7e8ad052c39.PNG">
 
-Seven main part of a computer: Processor, Memory, Motherboard, Input device, Output device, Interconnects, Chipset.
+**Seven main part of a computer**
+Processor, Memory, Motherboard, Input device, Output device, Interconnects, Chipset.
 
 ### Power supply
 <img width="250" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/137908862-b351cbc5-9ac0-408b-974c-3f795872ebcc.jpg">  
