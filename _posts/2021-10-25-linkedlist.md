@@ -146,18 +146,19 @@ void Clear(List* list);
 ```
 
 ### Main function
-#### Initialize linked lisT
+#### Initialize linked list
 Initialize before use linked list.  
 Create empty linked list by substitue NULL value for head pointing to the head node. crnt pointer is the currently selected node. It's used for select and delete node searched. 
+
  <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139399661-f7199682-7d2d-4359-8cae-6fc598e5677d.png"> 
 
 ```c
-    /*--- initialize linked list ---*/
-    void Initialize(List* list)
-    {
-        list->head = NULL;	/* head node */
-        list->crnt = NULL;	/* selected node */
-    }
+/*--- initialize linked list ---*/
+void Initialize(List* list)
+{
+    list->head = NULL;	/* head node */
+    list->crnt = NULL;	/* selected node */
+}
 ```
 
 ---
@@ -192,166 +193,166 @@ static void SetNode(Node* n, const Member* x, const Node* next)
 
 ---
 
-* **Searh node**
-    Search for nodes that match the condition.  
-    Seraching is linear scan and start from head node.  
-    Return value is pointer about the found node.  
+#### Searh node
+Search for nodes that match the condition.  
+Seraching is linear scan and start from head node.  
+Return value is pointer about the found node.  
 
-     * Termination condition
-        1. Don't find the node matching condition and shortly before passing tail node
-        2. Search for nodes matching condition.
+* Termination condition
+    1. Don't find the node matching condition and shortly before passing tail node
+    2. Search for nodes matching condition.
 
-    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139396570-22ff3c3d-0f5f-4034-94c3-525390f9346e.png">
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139396570-22ff3c3d-0f5f-4034-94c3-525390f9346e.png">
 
-    ```c
-    /*--- search for a node equal to x with compare function ---*/
-    Node* search(List* list, const Member* x, int compare(const Member* x, const Member* y))
-    {
+```c
+/*--- search for a node equal to x with compare function ---*/
+Node* search(List* list, const Member* x, int compare(const Member* x, const Member* y))
+{
+    Node* ptr = list->head;
+    while (ptr != NULL) {
+        if (compare(&ptr->data, x) == 0) {	/* return 0 if same the key value */
+            list->crnt = ptr;
+            return ptr;		/* search sucess */
+        }
+        ptr = ptr->next;	/* next node */
+    }
+    return NULL;		/* search fail */
+}
+```
+
+---
+
+#### Insert node to head
+Update head node and crnt to point to the newly created node.  
+Set a value by calling SetNode function.  
+    
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523150-95260178-04a7-42f7-b9a5-b4cb5106bb46.png">
+
+```c
+/*--- insert a node into the head ---*/
+void InsertFront(List* list, const Member* x)
+{
+    Node* ptr = list->head; /* substitute pointer about head node for ptr */
+    list->head = list->crnt = AllocNode();  /* create node and insert the node to head*/
+    SetNode(list->head, x, ptr);    /* set a value of node */
+}
+```
+
+---
+
+#### Insert node to tail*
+* Processing according to logic
+    1. List is empty
+        Same do that insert node to head so do as InserFront function.
+    2. List isn't empty
+        Insert newly node to tail.
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523081-4159c9cd-e277-486b-8672-2754a531dc12.png">
+
+```c
+/*--- insert a node into the tail ---*/
+void InsertRear(List* list, const Member* x)
+{
+    if (list->head == NULL)	/* is empty */
+        InsertFront(list, x);	/* insert to head */
+    else {
         Node* ptr = list->head;
-        while (ptr != NULL) {
-            if (compare(&ptr->data, x) == 0) {	/* return 0 if same the key value */
-                list->crnt = ptr;
-                return ptr;		/* search sucess */
-            }
-            ptr = ptr->next;	/* next node */
-        }
-        return NULL;		/* search fail */
+        while (ptr->next != NULL)   /* find tail node */
+            ptr = ptr->next; 
+        ptr->next = list->crnt = AllocNode();   /* create node and insert the node to tail */
+        SetNode(ptr->next, x, NULL);    /* tail node point to noting */
     }
-    ```
+}
+```
 
 ---
 
-* **Insert node to head**  
-    Update head node and crnt to point to the newly created node.  
-    Set a value by calling SetNode function.  
-    
-    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523150-95260178-04a7-42f7-b9a5-b4cb5106bb46.png">
+#### Delete head node 
+If list is not empty, execute deletion.  
+Update ptr pointer to second node and free memory for head.  
+Set head to ptr pointer and crnt pointer after free.  
 
-    ```c
-    /*--- insert a node into the head ---*/
-    void InsertFront(List* list, const Member* x)
-    {
-        Node* ptr = list->head; /* substitute pointer about head node for ptr */
-        list->head = list->crnt = AllocNode();  /* create node and insert the node to head*/
-        SetNode(list->head, x, ptr);    /* set a value of node */
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523083-17f7729b-da0d-469a-920f-c2a8c8344ab9.png">
+
+```c
+/*--- remove head node ---*/
+void RemoveFront(List* list)
+{
+    if (list->head != NULL) {
+        Node* ptr = list->head->next;		/* pointer about second node */
+        free(list->head);			/* free head node */
+        list->head = list->crnt = ptr;		/* new head node */
     }
-    ```
+}
+```
 
 ---
 
-* **Insert node to tail** 
-    * Processing according to logic
-        1. List is empty
-            Same do that insert node to head so do as InserFront function.
-        2. List isn't empty
-            Insert newly node to tail.
-    
-    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523081-4159c9cd-e277-486b-8672-2754a531dc12.png">
+#### Delete tail node
+* Processing according to the number of nodes
+    1. Node 1 quantity in list
+        Same that delete head node so run RemoveFront function.
+    2. Node more than two in list
+        <span style='background-color: #dcffe4'>The node in front of the tail node must have a NULL value as the next value.</span> Therfore decalre pre pointer that node in front of the node currently being scanned.
+                                Update crnt node in fornt of deleting node.
+        
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523088-fe8746c0-ff3f-4500-a0e7-6c9f56182434.png">
 
-    ```c
-    /*--- insert a node into the tail ---*/
-    void InsertRear(List* list, const Member* x)
-    {
-        if (list->head == NULL)	/* is empty */
-            InsertFront(list, x);	/* insert to head */
+```c
+/*--- remove tail node ---*/
+void RemoveRear(List* list)
+{
+    if (list->head != NULL) { /* isn't empty */
+        if ((list->head)->next == NULL)	/* node just 1 quantity */
+            RemoveFront(list);			/* delete head node */
         else {
-            Node* ptr = list->head;
-            while (ptr->next != NULL)   /* find tail node */
-                ptr = ptr->next; 
-            ptr->next = list->crnt = AllocNode();   /* create node and insert the node to tail */
-            SetNode(ptr->next, x, NULL);    /* tail node point to noting */
-        }
-    }
-    ```
-
----
-
-* **Delete head node** 
-    If list is not empty, execute deletion.  
-    Update ptr pointer to second node and free memory for head.  
-    Set head to ptr pointer and crnt pointer after free.  
-
-     <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523083-17f7729b-da0d-469a-920f-c2a8c8344ab9.png">
-
-    ```c
-    /*--- remove head node ---*/
-    void RemoveFront(List* list)
-    {
-        if (list->head != NULL) {
-            Node* ptr = list->head->next;		/* pointer about second node */
-            free(list->head);			/* free head node */
-            list->head = list->crnt = ptr;		/* new head node */
-        }
-    }
-    ```
-
----
-
-* **Delete tail node**  
-    * Processing according to the number of nodes
-        1. Node 1 quantity in list
-            Same that delete head node so run RemoveFront function.
-        2. Node more than two in list
-            <span style='background-color: #dcffe4'>The node in front of the tail node must have a NULL value as the next value.</span> Therfore decalre pre pointer that node in front of the node currently being scanned.
-                                   Update crnt node in fornt of deleting node.
-            
-     <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523088-fe8746c0-ff3f-4500-a0e7-6c9f56182434.png">
-
-    ```c
-    /*--- remove tail node ---*/
-    void RemoveRear(List* list)
-    {
-        if (list->head != NULL) { /* isn't empty */
-            if ((list->head)->next == NULL)	/* node just 1 quantity */
-                RemoveFront(list);			/* delete head node */
-            else {
-                Node* ptr = list->head; /* head node */
-                Node* pre = NULL;   /* node in front of the node currently being scanned */
-                while (ptr->next != NULL) { /* find tail node */
-                    pre = ptr; //
-                    ptr = ptr->next;
-                }
-
-                pre->next = NULL;	/* in front of tail node */
-                free(ptr);		/* free tail node */
-                list->crnt = pre;   /* update crnt node in fornt of deleting node */
+            Node* ptr = list->head; /* head node */
+            Node* pre = NULL;   /* node in front of the node currently being scanned */
+            while (ptr->next != NULL) { /* find tail node */
+                pre = ptr; //
+                ptr = ptr->next;
             }
+
+            pre->next = NULL;	/* in front of tail node */
+            free(ptr);		/* free tail node */
+            list->crnt = pre;   /* update crnt node in fornt of deleting node */
         }
     }
-    ```       
+}
+```       
 
 ---
 
-* **Delete selected node**  
-    * Processing according to logic
-        1. crnt is head node
-            Delete the head node with RemoveFont function.
-        2. crnt is not head node
-             <span style='background-color: #dcffe4'>Find a selected node and ptr pointer link to next node of crnt.</span> 
-             Free memory selected node and update crnt point to node in fornt of deleted node(ptr).
+#### Delete selected node 
+* Processing according to logic
+    1. crnt is head node
+        Delete the head node with RemoveFont function.
+    2. crnt is not head node
+            <span style='background-color: #dcffe4'>Find a selected node and ptr pointer link to next node of crnt.</span> 
+            Free memory selected node and update crnt point to node in fornt of deleted node(ptr).
 
-    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523092-ddc134bd-18d9-4803-b90b-95043c3b7515.png">
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523092-ddc134bd-18d9-4803-b90b-95043c3b7515.png">
 
-    ```c
-    /*--- remove selected node ---*/
-    void RemoveCurrent(List* list)
-    {
-        if (list->head != NULL) {
-            if (list->crnt == list->head)	/* select head node */
-                RemoveFront(list);			/* delete head node */
-            else {
-                Node* ptr = list->head;	/* head node */
-                while (ptr->next != list->crnt) /* find selected node */
-                    ptr = ptr->next;
-                ptr->next = list->crnt->next; /* ptr move next node pointer of crnt */
-                free(list->crnt); /* delete current node */
-                list->crnt = ptr; /* update crnt node in fornt of deleting node */
-            }
+```c
+/*--- remove selected node ---*/
+void RemoveCurrent(List* list)
+{
+    if (list->head != NULL) {
+        if (list->crnt == list->head)	/* select head node */
+            RemoveFront(list);			/* delete head node */
+        else {
+            Node* ptr = list->head;	/* head node */
+            while (ptr->next != list->crnt) /* find selected node */
+                ptr = ptr->next;
+            ptr->next = list->crnt->next; /* ptr move next node pointer of crnt */
+            free(list->crnt); /* delete current node */
+            list->crnt = ptr; /* update crnt node in fornt of deleting node */
         }
     }
-    ````
+}
+````
 
----0
+---
 
 **Linked List source file**
 ```c
