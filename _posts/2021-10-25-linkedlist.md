@@ -146,51 +146,49 @@ void Clear(List* list);
 ```
 
 ### Main function
+#### Initialize linked lisT
+Initialize before use linked list.  
+Create empty linked list by substitue NULL value for head pointing to the head node. crnt pointer is the currently selected node. It's used for select and delete node searched. 
+ <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139399661-f7199682-7d2d-4359-8cae-6fc598e5677d.png"> 
 
-* **Initialize linked list**
-    Initialize before use linked list.  
-    Create empty linked list by substitue NULL value for head pointing to the head node.   
-    crnt pointer is the currently selected node. It's used for select and delete node searched.  
-
-    <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139399661-f7199682-7d2d-4359-8cae-6fc598e5677d.png"> 
-
-    ```c
+```c
     /*--- initialize linked list ---*/
     void Initialize(List* list)
     {
         list->head = NULL;	/* head node */
         list->crnt = NULL;	/* selected node */
     }
-    ```
+```
 
 ---
 
-* **Create node**  
-    Create node type object and return the created pointer of object.
-    This function only run in this source file when insert node. Therefore make it a static function.
-    ```c
-    /*--- create node dynamically ---*/
-    static Node* AllocNode(void)
-    {
-        return calloc(1, sizeof(Node));
-    }
-    ```
+#### Create node
+Create node type object and return the created pointer of object.
+This function only run in this source file when insert node. Therefore make it a static function.
+ ```c
+/*--- create node dynamically ---*/
+static Node* AllocNode(void)
+ {
+     return calloc(1, sizeof(Node));
+}
+```
 
 ---
 
-*  **Set a member value of node** 
-    Set the value of two member of a node type object.  
-    Substitute x point to vlaue for n point to new node type object.  
-    Substitute passed to next as parameter for new node type object.   
-    This function only run in this source file when insert node. Therefore make it a static function.
-    ```c
-    /*--- set a value each member of node point to by n ---*/
-    static void SetNode(Node* n, const Member* x, const Node* next)
-    {
-        n->data = *x;		/* data */
-        n->next = next;		/* pointer for next node */
-    }
-    ```
+#### Set a member value of node
+Set the value of two member of a node type object.  
+Substitute x point to vlaue for n point to new node type object.  
+Substitute passed to next as parameter for new node type object.   
+This function only run in this source file when insert node. Therefore make it a static function.
+```c
+/*--- set a value each member of node point to by n ---*/
+static void SetNode(Node* n, const Member* x, const Node* next)
+{
+    n->data = *x;		/* data */
+    n->next = next;		/* pointer for next node */
+}
+```
+
 
 ---
 
@@ -353,7 +351,7 @@ void Clear(List* list);
     }
     ````
 
----
+---0
 
 **Linked List source file**
 ```c
