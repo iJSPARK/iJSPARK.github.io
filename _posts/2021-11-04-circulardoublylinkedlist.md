@@ -3,7 +3,7 @@ title : "Linked List"
 categories : 
     - Data Structure
 tag :
-    - [Linear List, Linked List]  # [C, python]
+    - [Linke List, Circular Linked List, Doubly Linked List, Circular Doubly Linked List]  # [C, python]
 author_profile: false
 sidebar:
     nav: "docs"
@@ -13,26 +13,66 @@ toc_sticky: true
 toc_label: "On This Page"
 ---
 
-## Linear List  
-Linear List made by array 
+## Circular Linked List
+In a linked list, if tail node point to the head node, it becomes a cicular linke list. [Liked List](https://ijspark.github.io/data%20structure/linkedlist/)
+Circular linked list is a suitable data structure for storing data arranged in a ring.
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/140265028-1fe4c6a9-d6d9-4a85-84e3-26b92d0cbb7e.png"> 
+
+Cicular linked list different to linked list, pointer is not NULL vaule but address of head node.
+
+* Check empty circular linked list
+    ```c
+    list->head == NULL 
+    ```
+
+* Check a circular list with one node
+    ```c
+    list->head->next == list->head
+    ```
+
+* Check if it is head node
+    ```c
+    p == list->head /* p is node type pointer variable */
+    ```
+
+* Check if it is tail node
+    ```c
+    p->next == list->head 
+    ```
+
+<br/>
+
+## Doubly Linked List
+
+Linked list easy to find next node but can't find front node. That's why the doubly linked list was devised.
+Each node has two pointers which point to next node and front node.
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/140272829-31b66f6d-cc5a-482a-a498-5a16066ca9ce.png"> 
 
 ```c
-/* Member struct */
-typedef struct { 
-	int mem_no; // member number
-	char* name; // name
-	char* phone; // phone number
-} Person;
-
-Person data[] = {
-	{11, "Steve jobs", "111-1111-1111"},
-	{22, "Bill gates", "222-2222-2222"},
-	{66, "Da vinci", "666-6666-6666"},
-	{77, "Elon musk", "777-7777-7777"},
-	{0, "", ""},
-	{0, "", ""},
-};
+typedef struct __node {
+    Member data;    /* data */
+    struct __node *prev;    /* pointer for previous node */ 
+    struct __node *prev;    /* pointer for next node */
+} Dnode;
 ```
+
+* Check if it is head node
+    ```c
+    p == list->head /* p is node type pointer variable */
+    p->prev == NULL 
+    ```
+
+* Check if it is tail node
+    ```c
+    p->next == NULL
+    ```
+    
+## Circular Doubly Linked List
+Circular Doubly Linked List is a combination of the two concepts above.
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/140274758-e715adac-202f-4b28-88d9-851c050a3464.png"> 
 
 * Before data inserting  
 
@@ -105,7 +145,7 @@ typedef struct {
 #ifndef ___LinkedList
 #define ___LinkedList
 
-#include "Member.h" /* Member data (header) */
+#include "Member.h"
 
 /*--- node ---*/
 typedef struct __node {
@@ -290,7 +330,7 @@ void RemoveFront(List* list)
 
 #### Delete tail node
 * Processing according to the number of nodes
-    1. One node in list
+    1. Node 1 quantity in list
         Same that delete head node so run RemoveFront function.
     2. Node more than two in list
         <span style='background-color: #dcffe4'>The node in front of the tail node must have a NULL value as the next value.</span> Therfore decalre pre pointer that node in front of the node currently being scanned.
