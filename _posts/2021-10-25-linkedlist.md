@@ -99,52 +99,6 @@ typedef struct {
 
 <br/>
 
-**Linked List header file**
-```c
-/* Linked List using pointer(header) */
-#ifndef ___LinkedList
-#define ___LinkedList
-
-#include "Member.h" /* Member data (header) */
-
-/*--- node ---*/
-typedef struct __node {
-	Member data;		/* data */
-	struct __node* next;	/* pointer for next node */
-} Node;
-
-/*--- linked list ---*/
-typedef struct {
-	Node* head;		/* pointer for head node */
-	Node* crnt;		/* pointer for selected node */
-} List;
-
-/*--- initialize linked list ---*/
-void Initialize(List* list);
-
-/*--- search for a node equal to x with compare function ---*/
-Node* search(List* list, const Member* x, int compare(const Member* x, const Member* y));
-
-/*--- insert a node into the head ---*/
-void InsertFront(List* list, const Member* x);
-
-/*--- insert a node into the tail ---*/
-void InsertRear(List* list, const Member* x);
-
-/*--- remove head node ---*/
-void RemoveFront(List* list);
-
-/*--- remove tail node ---*/
-void RemoveRear(List* list);
-
-/*--- remove selected node ---*/
-void RemoveCurrent(List* list);
-
-/*--- remove all nodes ---*/
-void Clear(List* list);
-#endif
-```
-
 ### Main function
 #### Initialize linked list
 Initialize before use linked list.  
@@ -354,13 +308,67 @@ void RemoveCurrent(List* list)
 
 ---
 
-**Linked List source file**
+**Linked List program source file**
 ```c
 /* Linked List using pointer(source) */
 #include <stdio.h>
 #include <stdlib.h>
-#include "Member.h"
-#include "LinkedList.h"
+#include <string.h>
+
+#define MEMBER_NO 	1   /* integer value representing a number */
+#define MEMBER_NAME	2   /* constant value representing the name */
+
+/*--- member data ---*/
+typedef struct {
+	int no;         /* no */
+	char name[20];  /* name */
+} Member;
+
+/*--- node ---*/
+typedef struct __node {
+	Member data;		/* data */
+	struct __node* next;	/* pointer for next node */
+} Node;
+
+/*--- linked list ---*/
+typedef struct {
+	Node* head;		/* pointer for head node */
+	Node* crnt;		/* pointer for selected node */
+} List;
+
+/*--- member no compare function ---*/
+int MemberNoCmp(const Member* x, const Member* y)
+{
+	return x->no < y->no ? -1 : x->no > y->no ? 1 : 0;
+}
+
+/*--- member name compare function ---*/
+int MemberNameCmp(const Member* x, const Member* y)
+{
+	return strcmp(x->name, y->name);
+}
+
+/*--- represent member data ---*/
+void PrintMember(const Member* x)
+{
+	printf("%d %s", x->no, x->name);
+}
+
+/*--- represent member data(including \n) ---*/
+void PrintLnMember(const Member* x)
+{
+	printf("%d %s\n", x->no, x->name);
+}
+
+/*--- read member data ---*/
+Member ScanMember(const char* message, int sw)
+{
+	Member temp;
+	printf("Enter the data to %s.\n", message);
+	if (sw & MEMBER_NO) { printf("no : "); scanf("%d", &temp.no); }
+	if (sw & MEMBER_NAME) { printf("name : "); scanf("%s", temp.name); }
+	return temp;
+}
 
 /*--- create node dynamically ---*/
 static Node* AllocNode(void)
@@ -387,13 +395,13 @@ Node* search(List* list, const Member* x, int compare(const Member* x, const Mem
 {
 	Node* ptr = list->head;
 	while (ptr != NULL) {
-		if (compare(&ptr->data, x) == 0) {	/* same the key value */
+		if (compare(&ptr->data, x) == 0) {  /* same the key value */
 			list->crnt = ptr;
-			return ptr;			/* search sucess */
+			return ptr;     /* search sucess */
 		}
-		ptr = ptr->next;			/* select next node */
+		ptr = ptr->next;        /* select next node */
 	}
-	return NULL;					/* search fail */
+	return NULL;		        /* search fail */
 }
 
 /*--- insert a node into the head ---*/
@@ -422,9 +430,9 @@ void InsertRear(List* list, const Member* x)
 void RemoveFront(List* list)
 {
 	if (list->head != NULL) {
-		Node* ptr = list->head->next;		/* pointer about second node */
-		free(list->head);			/* free head node */
-		list->head = list->crnt = ptr;		/* new head node */
+		Node* ptr = list->head->next;	/* pointer about second node */
+		free(list->head);		/* free head node */
+		list->head = list->crnt = ptr;	/* new head node */
 	}
 }
 
@@ -443,7 +451,7 @@ void RemoveRear(List* list)
 			}
 
 			pre->next = NULL;	/* in front of tail node */
-			free(ptr);		   /* free tail node */
+			free(ptr);		/* free tail node */
 			list->crnt = pre;       /* connect linked list */
 		}
 	}
@@ -469,8 +477,143 @@ void RemoveCurrent(List* list)
 /*--- remove all nodes ---*/
 void Clear(List* list)
 {
-	while (list->head != NULL)		/* until empty */
-		RemoveFront(list);		/* delete head node */
+	while (list->head != NULL)	/* until empty */
+		RemoveFront(list);	/* delete head node */
 	list->crnt = NULL;
+}
+
+/*--- print data of seleted node ---*/
+void PrintCurrent(const List* list)
+{
+	if (list->crnt == NULL)
+		printf("There is no node.");
+	else
+		PrintMember(&list->crnt->data);
+}
+
+/*---  print data of selecting nodes in list order(including \n) ---*/
+void PrintLnCurrent(const List* list)
+{
+	PrintCurrent(list);
+	putchar('\n');
+}
+
+/*--- print data of all nodes in list order ---*/
+void Print(const List* list)
+{
+	if (list->head == NULL)
+		puts("There are no nodes.");
+	else {
+		Node* ptr = list->head;
+		puts("【 View all 】");
+		while (ptr != NULL) {
+			PrintLnMember(&ptr->data);
+			ptr = ptr->next;    /* select rear node */
+		}
+	}
+}
+
+/*--- terminate linked list ---*/
+void Terminate(List* list)
+{
+	Clear(list);    /* delete all node */
+}
+
+/*--- menu ---*/
+typedef enum {
+	TERMINATE, INS_FRONT, INS_REAR, RMV_FRONT, RMV_REAR, PRINT_CRNT,
+	RMV_CRNT, SRCH_NO, SRCH_NAME, PRINT_ALL, CLEAR
+} Menu;
+
+/*--- select menu ---*/
+Menu SelectMenu(void)
+{
+	int i, ch;
+	char* mstring[] = {
+		"Insert node into head",   "Insert node into tail",   "Delete head node",
+		"Delete tail node",     "Print seleted node",   "Delete selected node",
+		"Searh by no",          "Search by number",        "Print data of all node",
+		"Delete all node",
+	};
+
+	do {
+		for (i = TERMINATE; i < CLEAR; i++) {
+			printf("(%2d) %-18.18s ", i + 1, mstring[i]);
+			if ((i % 3) == 2)
+				putchar('\n');
+		}
+		printf("( 0) Exit : ");
+		scanf("%d", &ch);
+	} while (ch < TERMINATE || ch > CLEAR);
+
+	return (Menu)ch;
+}
+
+/*--- main ---*/
+int main(void)
+{
+	Menu menu;
+	List list;
+
+	Initialize(&list);	/* initialize linear list */
+	do {
+		Member x;
+		switch (menu = SelectMenu()) {
+			
+		case INS_FRONT: /* insert node into head */
+			x = ScanMember("Insert into the head", MEMBER_NO | MEMBER_NAME);
+			InsertFront(&list, &x);
+			break;
+
+		case INS_REAR:	/* insert node into tail */
+			x = ScanMember("Insert into the tail", MEMBER_NO | MEMBER_NAME);
+			InsertRear(&list, &x);
+			break;
+
+		case RMV_FRONT:	/* delete head node */
+			RemoveFront(&list);
+			break;
+
+		case RMV_REAR:	/* delete tail node */
+			RemoveRear(&list);
+			break;
+
+		case PRINT_CRNT: /* print seleted node */
+			PrintLnCurrent(&list);
+			break;
+
+		case RMV_CRNT: /* delete selected node */
+			RemoveCurrent(&list);
+			break;
+
+		case SRCH_NO: /* searh by no */
+			x = ScanMember("Search", MEMBER_NO);
+			if (search(&list, &x, MemberNoCmp) != NULL)
+				PrintLnCurrent(&list);
+			else
+				puts("There is no data for that number.");
+			break;
+
+		case SRCH_NAME: /* search by number */
+			x = ScanMember("Search", MEMBER_NAME);
+			if (search(&list, &x, MemberNameCmp) != NULL)
+				PrintLnCurrent(&list);
+			else
+				puts("There is no data for that name.");
+			break;
+
+		case PRINT_ALL: /* print data of all node */
+			Print(&list);
+			break;
+
+		case CLEAR: /* delete all node */
+			Clear(&list);
+			break;
+		}
+	} while (menu != TERMINATE);
+
+	Terminate(&list);               
+
+	return 0;
 }
 ```
