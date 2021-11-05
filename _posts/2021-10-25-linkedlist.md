@@ -308,7 +308,7 @@ void RemoveCurrent(List* list)
 
 ---
 
-**Linked List program source file**
+### Program using linked list
 ```c
 /* Linked List using pointer(source) */
 #include <stdio.h>
