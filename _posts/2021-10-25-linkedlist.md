@@ -102,7 +102,7 @@ typedef struct {
 ### Main function
 #### Initialize linked list
 Initialize before use linked list.  
-Create empty linked list by substitue NULL value for head pointing to the head node. crnt pointer is the currently selected node. It's used for select and delete node searched. 
+Create empty linked list by substitue `NULL` value for head pointing to the head node. crnt pointer is the currently selected node. It's used for select and delete node searched. 
 
  <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139399661-f7199682-7d2d-4359-8cae-6fc598e5677d.png"> 
 
@@ -132,7 +132,7 @@ static Node* AllocNode(void)
 
 #### Set a member value of node
 Set the value of two member of a node type object.  
-Substitute x point to vlaue for n point to new node type object.  
+Substitute `x` point to vlaue for n point to new node type object.  
 Substitute passed to next as parameter for new node type object.   
 This function only run in this source file when insert node. Therefore make it a static function.
 ```c
@@ -144,10 +144,9 @@ static void SetNode(Node* n, const Member* x, const Node* next)
 }
 ```
 
-
 ---
 
-#### Searh node
+#### Searh for node
 Search for nodes that match the condition.  
 Seraching is linear scan and start from head node.  
 Return value is pointer about the found node.  
@@ -247,7 +246,7 @@ void RemoveFront(List* list)
     1. One node in list
         Same that delete head node so run RemoveFront function.
     2. Node more than two in list
-        <span style='background-color: #dcffe4'>The node in front of the tail node must have a NULL value as the next value.</span> Therfore decalre pre pointer that node in front of the node currently being scanned.
+        <span style='background-color: #dcffe4'>The node in front of the tail node must have a `NULL` value as the next value.</span> Therfore decalre pre pointer that node in front of the node currently being scanned.
                                 Update crnt node in fornt of deleting node.
         
 <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/139523088-fe8746c0-ff3f-4500-a0e7-6c9f56182434.png">
@@ -306,7 +305,7 @@ void RemoveCurrent(List* list)
 }
 ````
 
----
+<br/>
 
 ### Program using linked list
 ```c
