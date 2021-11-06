@@ -56,6 +56,8 @@ typedef struct __node {
 } Dnode;
 ```
 
+---
+
 * Check if it is head node
     ```c
     p == list->head /* p is node type pointer variable */
