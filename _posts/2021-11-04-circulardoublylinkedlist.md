@@ -1,5 +1,5 @@
 ---
-title : "Linked List"
+title : "Circular Doubly Linked List"
 categories : 
     - Data Structure
 tag :
@@ -21,31 +21,37 @@ Circular linked list is a suitable data structure for storing data arranged in a
 
 Cicular linked list different to linked list, pointer is not NULL vaule but address of head node. `p` is node type pointer variable
 
-* Check empty circular linked list
+* Check empty circular linked list  
     `list->head == NULL`
+
 ---
-* Check a circular list with one node
+
+* Check a circular list with one node  
     `list->head->next == list->head`
+
 ---
-* Check if it is head node
+
+* Check if it is head node  
     `p == list->head`
+
 ---
-* Check if it is tail node
+
+* Check if it is tail node  
     `p->next == list->head` 
 
 <br/>
 
 ## Doubly Linked List
 
-Linked list easy to find next node but can't find front node. That's why the doubly linked list was devised.
-Each node has two pointers which point to next node and front node.
+Linked list easy to find next node but can't find previous node. That's why the doubly linked list was devised.
+Each node has two pointers which point to next node and previous node.
 
 <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/140598091-4159be2f-c6c3-4e79-9339-aa7861bba4f1.png"> 
 
 ```c
 typedef struct __node {
     Member data;    /* data */
-    struct __node *prev;    /* pointer for front node */ 
+    struct __node *prev;    /* pointer for previous node */ 
     struct __node *next;    /* pointer for next node */
 } Dnode;
 ```
@@ -56,10 +62,14 @@ typedef struct __node {
     p->prev == NULL 
     ```
 
+---
+
 * Check if it is tail node
     ```c
     p->next == NULL
     ```
+
+<br/>
 
 ## Circular Doubly Linked List
 Circular Doubly Linked List is a combination of the two concepts above.
@@ -69,13 +79,13 @@ Circular Doubly Linked List is a combination of the two concepts above.
 * Dnode is structure node
     1. `data` : member that stores data
     2. `next` : pointer to next node
-    3. `prev` : pointer to front node
+    3. `prev` : pointer to previous node
 
 ```c
 /*--- Node ---*/
 typedef struct __node {
 	Member data;            /* data */
-	struct __node *prev;    /* pointer to front node */
+	struct __node *prev;    /* pointer to previous node */
 	struct __node *next;    /* pointer to next node */
 } Dnode;
 ```
@@ -83,6 +93,7 @@ typedef struct __node {
 ---
 
 * Dlist is structure that manage circular doubly linked list
+
 ```c
 /*--- Dlist manage circular doubly linked list ---*/
 typedef struct { 
@@ -94,8 +105,40 @@ typedef struct {
 <br/>
 
 ### Main function
+#### Create node
+Create Dnode type object and return the created pointer of object.
+This function only run in this source file when insert node. Therefore make it a static function.
+
+ ```c
+/*--- create node dynamically ---*/
+static Dnode* AllocNode(void)
+ {
+     return calloc(1, sizeof(Dnode));
+}
+```
+
+---
+
+#### Set a member value of node
+Set the value of two member of a Dnode type object.  
+Substitute `x` point to vlaue for n point to new Dnode type object.  
+Substitute passed to next as parameter for new node type object.
+Substitute passed to prev as parameter for previous node type object.
+This function only run in this source file when insert node. Therefore make it a static function.
+```c
+/*--- set a value each member of node point to by n ---*/
+static void SetDNode(Dnode* n, const Member* x, const Dnode* prev, const Dnode* next)
+{
+	n->data = *x;   /* data */         
+	n->prev = prev; /* previous node pointer */                   
+	n->next = next; /* next node pointer */   
+}
+```
+
+---
+
 #### Initialize circular doubly linked list
-Function that create circular doubly linked list, list initialize by create empty node. The node on head of list in order to perform insertion and deletion of node. It is called 'dummy node'. Using the dummy node provide consistency in code when inserting, searching, deleting node. The dummy node has front pointer and next pointer point to itself.
+Function that create circular doubly linked list, list initialize by create empty node. The node on head of list in order to perform insertion and deletion of node. It is called 'dummy node'. Using the dummy node provide consistency in code when inserting, searching, deleting node. The dummy node has previous pointer and next pointer point to itself.
 
 <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/140598096-40e3817f-fcba-42e5-8542-f5c2858a460a.png"> 
 
@@ -111,8 +154,8 @@ void Initialize(Dlist* list)
 
 ---
 
-#### Check if list is empty
- The dummy node has front pointer and next pointer point to itself.
+#### Check list is empty
+ The dummy node has previous pointer and next pointer point to itself.
 
 Empty case
 1. `list->head->next == list->head`
@@ -157,8 +200,8 @@ Insert a node immediately after the p node.
 Since the dummy node is at the head of the list, there is no need to process differently for that case inserting into an empty list and inserting at the head of the list.
 
 * Perform logic
-    1. Create node to insert, set front pointer of node point to A and next pointer point to C.
-    2. Update `p->next` next pointer of node A and `p->next->prev` front pointer of node C to point to node B.
+    1. Create node to insert, set previous pointer of node point to A and next pointer point to C.
+    2. Update `p->next` next pointer of node A and `p->next->prev` previous pointer of node C to point to node B.
     3. Update selected node `crnt` to point to inserting node.
 
 <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/140598111-2b2682cd-5b5d-416c-b469-832d3ce43783.png"> 
@@ -201,14 +244,16 @@ void InsertRear(Dlist* list, const Member* x)
 }
 ```
 
+---
+
 #### Remove node 
 Function that remove the node pointed to by p pointer.
 
 * Perform logic
     1. Update `p->prev->next` next pointer of A node to `p->next` C node.
-    2. Update `p->next->prev` front pointer of C node to `p->prev` A node.
+    2. Update `p->next->prev` previous pointer of C node to `p->prev` A node.
     3. Free the memory pointed to by p.
-    4. Update `crnt` selected node to point to the node in front of deleted node.
+    4. Update `crnt` selected node to point to the node in previous of deleted node.
 
 <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/140598255-51a9a33e-3d87-4e78-988b-b3758017d716.png">
 
@@ -225,6 +270,8 @@ void Remove(Dlist* list, Dnode* p)
 }
 ```
 
+---
+
 #### Remove head node
 Remove the head node using Remove function.
 Head node location is `list->head->next`.
@@ -237,6 +284,8 @@ void RemoveFront(Dlist* list)
 		Remove(list, list->head->next);
 }
 ```
+
+---
 
 #### Remove tail node
 Remove the tail node using Remove function.
@@ -251,6 +300,8 @@ void RemoveRear(Dlist* list)
 }
 ```
 
+---
+
 #### Remove selected node
 Remove the selected node, delete node pointed to by `list->crnt`.
 
@@ -263,6 +314,38 @@ void RemoveCurrent(Dlist* list)
 }
 ```
 
+---
+
+#### Move to next node
+
+```c
+/*--- Move seleced node to next node ---*/
+int Next(Dlist* list)
+{
+	if (IsEmpty(list) || list->crnt->next == list->head)
+		return 0;                        
+	list->crnt = list->crnt->next;
+	return 1;
+}
+```
+
+---
+
+#### Move to previous node
+
+```c
+/*--- Move seleced node to previous node ---*/
+int Prev(Dlist* list)
+{
+	if (IsEmpty(list) || list->crnt->prev == list->head)
+		return 0;                         
+	list->crnt = list->crnt->prev;
+	return 1;
+}
+```
+
+---
+
 #### Clear all node
 Delete nodes until the list is empty.
 
@@ -274,6 +357,8 @@ void Clear(Dlist* list)
 		RemoveFront(list);  /* remove head node */     
 }
 ```
+
+---
 
 #### Terminate circular doubly linked list
 Call the Clear function to delete all nodes and clear the memory area of ​​the dummy node.
@@ -309,7 +394,7 @@ typedef struct {
 /*--- Node ---*/
 typedef struct __node {
 	Member data;            /* data */
-	struct __node *prev;    /* pointer to front node */
+	struct __node *prev;    /* pointer to previous node */
 	struct __node *next;    /* pointer to next node */
 } Dnode;
 
@@ -343,7 +428,6 @@ void PrintLnMember(const Member* x)
 	printf("%d %s\n", x->no, x->name);
 }
 
-
 /*--- read member data ---*/
 Member ScanMember(const char* message, int sw)
 {
@@ -360,12 +444,12 @@ static Dnode* AllocDNode(void)
 	return calloc(1, sizeof(Dnode));
 }
 
-/*--- 노드의 각 멤버에 값을 설정 set each member of node ----*/
+/*--- set a value each member of node point to by n ---*/
 static void SetDNode(Dnode* n, const Member* x, const Dnode* prev, const Dnode* next)
 {
-	n->data = *x;                              /* 데이터 */
-	n->prev = prev;                            /* 앞쪽노드에 대한 포인터 */
-	n->next = next;                            /* 뒤쪽노드에 대한 포인터 */
+	n->data = *x;   /* data */         
+	n->prev = prev; /* previous node pointer */                   
+	n->next = next; /* next node pointer */   
 }
 
 /*--- is empty? ---*/
@@ -379,150 +463,151 @@ void Initialize(Dlist* list)
 {
 	Dnode* dummyNode = AllocDNode();       /* create dummy node */
 	list->head = list->crnt = dummyNode;	/* on the head */
-	dummyNode->prev = dummyNode->next = dummyNode; /* point to itself */
+	dummyNode->prev = dummyNode->next =cd dummyNode; /* point to itself */
 }
 
-/*--- 주목노드의 데이터를 출력 ---*/
-void PrintCurrent(const Dlist* list)
+/*--- print data of seleting node ---*/
+void PrintCurrent(const List* list)
 {
-	if (IsEmpty(list))
-		printf("주목노드가 없습니다.");
+	if (list->crnt == NULL)
+		printf("There is no node.");
 	else
 		PrintMember(&list->crnt->data);
 }
 
-/*--- 주목노드의 데이터를 출력(줄바꿈 문자 붙임) ---*/
-void PrintLnCurrent(const Dlist* list)
+/*---  print data of selecting nodes in list order(including \n) ---*/
+void PrintLnCurrent(const List* list)
 {
 	PrintCurrent(list);
 	putchar('\n');
 }
 
-/*--- 함수 compare로 x와 같은 노드를 검색 ---*/
+/*--- print data of all nodes in list order ---*/
+void Print(const List* list)
+{
+	if (list->head == NULL)
+		puts("There are no nodes.");
+	else {
+		Node* ptr = list->head;
+		puts("【 View all 】");
+		while (ptr != NULL) {
+			PrintLnMember(&ptr->data);
+			ptr = ptr->next;    /* select next node */
+		}
+	}
+}
+
+
+/*--- search for a node equal to x with compare function ---*/
 Dnode* search(Dlist* list, const Member* x, int compare(const Member* x, const Member* y))
 {
 	Dnode* ptr = list->head->next;
 	while (ptr != list->head) {
 		if (compare(&ptr->data, x) == 0) {
 			list->crnt = ptr;
-			return ptr;                 /* 검색 성공 */
+			return ptr;     /* searh sucess */
 		}
 		ptr = ptr->next;
 	}
-	return NULL;                        /* 검색 실패 */
+	return NULL;        /* searh fail */
 }
 
-/*--- 모든 노드의 데이터를 리스트 순으로 출력 ---*/
-void Print(const Dlist* list)
-{
-	if (IsEmpty(list))
-		puts("노드가 없습니다.");
-	else {
-		Dnode* ptr = list->head->next;
-		puts("【 모두 보기 】");
-		while (ptr != list->head) {
-			PrintLnMember(&ptr->data);
-			ptr = ptr->next;                /* 뒤쪽노드에 주목 */
-		}
-	}
-}
-
-/*--- 모든 노드의 데이터를 리스트 순서 거꾸로 출력 ---*/
+/*--- print data of all nodes list in reverse order ---*/
 void PrintReverse(const Dlist* list)
 {
 	if (IsEmpty(list))
-		puts("노드가 없습니다.");
+		puts("There are no nodes.");
 	else {
 		Dnode* ptr = list->head->prev;
-		puts("【 모두 보기 】");
+		puts("【 View all 】");
 		while (ptr != list->head) {
 			PrintLnMember(&ptr->data);
-			ptr = ptr->prev;                /* 앞쪽노드에 주목 */
+			ptr = ptr->prev;    /* select previous node */
 		}
 	}
 }
 
-/*--- 주목노드를 하나 뒤쪽으로 나아가도록 ---*/
+/*--- move the current node next one ---*/
 int Next(Dlist* list)
 {
 	if (IsEmpty(list) || list->crnt->next == list->head)
-		return 0;                           /* 나아갈 수 없음 */
+		return 0;                           
 	list->crnt = list->crnt->next;
 	return 1;
 }
 
-/*--- 주목노드를 하나 앞쪽으로 되돌아가도록 ---*/
+/*--- move the current node previous one ---*/
 int Prev(Dlist* list)
 {
 	if (IsEmpty(list) || list->crnt->prev == list->head)
-		return 0;                           /* 되돌아갈 수 없음 */
+		return 0;                       
 	list->crnt = list->crnt->prev;
 	return 1;
 }
 
-/*--- p가 가리키는 노드를 삭제 ---*/
+/*--- remove the node pointed to by p pointer ---*/
 void Remove(Dlist* list, Dnode* p)
 {
 	p->prev->next = p->next;
 	p->next->prev = p->prev;
-	list->crnt = p->prev;                   /* 삭제한 노드의 앞쪽노드에 주목 */
+	list->crnt = p->prev;   /* select deleted node */
 	free(p);
 	if (list->crnt == list->head)
 		list->crnt = list->head->next;
 }
 
-/*--- 머리노드를 삭제 ---*/
+/*--- remove head node ---*/
 void RemoveFront(Dlist* list)
 {
 	if (!IsEmpty(list))
 		Remove(list, list->head->next);
 }
 
-/*--- 꼬리노드를 삭제 ---*/
+/*--- remove tail node ---*/
 void RemoveRear(Dlist* list)
 {
 	if (!IsEmpty(list))
 		Remove(list, list->head->prev);
 }
 
-/*--- 주목노드를 삭제 ---*/
+/*--- remove selected node ---*/
 void RemoveCurrent(Dlist* list)
 {
 	if (list->crnt != list->head)
 		Remove(list, list->crnt);
 }
 
-/*--- 모든 노드를 삭제 ---*/
+/*--- remove all node ---*/
 void Clear(Dlist* list)
 {
-	while (!IsEmpty(list))                    /* 텅 빌 때까지 */
-		RemoveFront(list);                    /* 머리노드를 삭제 */
+	while (!IsEmpty(list))  /* until the list is empty */
+		RemoveFront(list);  /* remove head node */     
 }
 
-/*--- 원형 이중 연결 리스트의 뒤처리 ---*/
+/*--- remove circular doubly linked list ---*/
 void Terminate(Dlist* list)
 {
-	Clear(list);                              /* 모든 노드를 삭제 */
-	free(list->head);                         /* 더미 노드를 삭제 */
+	Clear(list);    /* delete all node */              
+	free(list->head);   /* dummy node memory area */                   
 }
 
-/*--- p가 가리키는 노드 바로 뒤에 노드를 삽입 ---*/
+/*--- insert a node immediately after the p node ---*/
 void InsertAfter(Dlist* list, Dnode* p, const Member* x)
 {
 	Dnode* ptr = AllocDNode();
 	Dnode* nxt = p->next;
 	p->next = p->next->prev = ptr;
 	SetDNode(ptr, x, p, nxt);
-	list->crnt = ptr;                         /* 삽입한 노드에 주목 */
+	list->crnt = ptr;   /* crnt set inserting node */
 }
 
-/*--- 머리에 노드를 삽입 ---*/
+/*--- insert node into a head ---*/
 void InsertFront(Dlist* list, const Member* x)
 {
 	InsertAfter(list, list->head, x);
 }
 
-/*--- 꼬리에 노드를 삽입 ---*/
+/*--- insert node into a tail ---*/
 void InsertRear(Dlist* list, const Member* x)
 {
 	InsertAfter(list, list->head->prev, x);
@@ -568,12 +653,12 @@ int main(void)
 		switch (menu = SelectMenu()) {
 
 		case INS_FRONT:
-			x = ScanMember("머리에 삽입", MEMBER_NO | MEMBER_NAME);
+			x = ScanMember("Inserto into head", MEMBER_NO | MEMBER_NAME);
 			InsertFront(&list, &x);
 			break;
 
 		case INS_REAR:
-			x = ScanMember("꼬리에 삽입", MEMBER_NO | MEMBER_NAME);
+			x = ScanMember("Inserto into tail", MEMBER_NO | MEMBER_NAME);
 			InsertRear(&list, &x);
 			break;
 
@@ -598,15 +683,15 @@ int main(void)
 			if (search(&list, &x, MemberNoCmp) != NULL)
 				PrintLnCurrent(&list);
 			else
-				puts("그 번호의 데이터가 없습니다.");
+				puts("There is no data matching that number");
 			break;
 
 		case SRCH_NAME:
-			x = ScanMember("검색", MEMBER_NAME);
+			x = ScanMember("Search", MEMBER_NAME);
 			if (search(&list, &x, MemberNameCmp) != NULL)
 				PrintLnCurrent(&list);
 			else
-				puts("그 이름의 데이터가 없습니다.");
+				puts("There is no data matching that nanme");
 			break;
 
 		case PRINT_ALL:
@@ -627,7 +712,7 @@ int main(void)
 		}
 	} while (menu != TERMINATE);
 
-	Terminate(&list);			/* terminate circular doubly linked list */
+	Terminate(&list);   /* terminate circular doubly linked list */
 
 	return 0;
 }
