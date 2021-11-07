@@ -708,7 +708,7 @@ int main(void)
 			Prev(&list);
 			break;
 
-		case CLEAR: /* delete all node */
+		case CLEAR: 
 			Clear(&list);
 			break;
 		}
