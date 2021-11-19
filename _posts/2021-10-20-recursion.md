@@ -16,7 +16,15 @@ toc_label: "On This Page"
 
 \[
   f(x) = \begin{cases}
-    n f(n-1) & \text{$(n >= 1)$} \\
+    n f(n-1) & \text{$(n >= 1)$} \\  
     1 & \text{$(n = 0)$}
+  \end{cases}
+\]
+
+\[
+  f(x) = \begin{cases}
+    n f(n-1) & \text{$(n >= 1)$} \\  
+    1 & \text{$(n = 0)$} \\  
+    2 & \text{(n = 2)}
   \end{cases}
 \]
