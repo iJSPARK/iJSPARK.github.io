@@ -2,8 +2,7 @@
 title : "Overview of Data Structure & Algorithm"
 categories : 
     - Data Structure
-tag :
-    - [Linear List, Linked List]  # [C, python]
+    - Algorithm
 author_profile: false
 sidebar:
     nav: "docs"
@@ -102,7 +101,7 @@ $T(n_2)$ slope constant when the number of data increase but $T(n_1)$ operation 
 Big-O expresses the upper limit of the number of operations according to data increase. Also, it is time/space complexity for worst case.
 
 $O(n) = 2n + 1$  
-$O(n^2) = 3n^2$s
+$O(n^2) = 3n^2$
 
 ---
 
