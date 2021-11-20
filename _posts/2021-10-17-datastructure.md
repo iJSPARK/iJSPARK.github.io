@@ -81,9 +81,9 @@ Algorithm measurement is necessary to know the increase and decrease of the perf
 
 <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/142577982-a6fc5002-4ba3-4a2d-bad7-c196e72c44a6.png"> 
 
-1. Number of data ($0 <= n <= a$)
+1. Number of data ($0 <= n <= a$)  
 $T(n_1)$ algorithm more fast than $T(n_2)$ algorithm
-2. Number of data ($n > a$)
+2. Number of data ($n > a$)  
 $T(n_2)$ algorithm more fast than $T(n_1)$ algorithm
     
 Let's look at the increase in the number of operations according to the number of data increases.
