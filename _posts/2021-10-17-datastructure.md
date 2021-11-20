@@ -81,10 +81,8 @@ Algorithm measurement is necessary to know the increase and decrease of the perf
 
 <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/142577982-a6fc5002-4ba3-4a2d-bad7-c196e72c44a6.png"> 
 
-1. Number of data ($0 <= n <= a$)  
-$T(n_1)$ algorithm more fast than $T(n_2)$ algorithm
-2. Number of data ($n > a$)  
-$T(n_2)$ algorithm more fast than $T(n_1)$ algorithm
+$T(n_1)$ algorithm more fast than $T(n_2)$ algorithm. ($0 <= n <= a$)
+$T(n_2)$ algorithm more fast than $T(n_1)$ algorithm. ($n > a$)
     
 Let's look at the increase in the number of operations according to the number of data increases.
 $T(n_2)$ slope constant when the number of data increase but $T(n_1)$ operation count increase rapidly. So $T(n_2)$ algorithm is better than $T(n_1)$. Be that as $T(n_1)$ may be not to say it’s a bad algorithm. $T(n_2)$ is difficult to implement than $T(n_1)$. Therefore if the number of data is small, select $T(n_1)$ algorithm.
