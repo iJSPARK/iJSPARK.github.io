@@ -2,6 +2,8 @@
 title : "Recursion"
 categories : 
     - Data Structure
+tag :
+    - [Recursive function, Recursion, Fibonacci]  # [C, python]
 author_profile: false
 sidebar:
     nav: "docs"
