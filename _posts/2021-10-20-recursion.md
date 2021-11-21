@@ -86,18 +86,11 @@ $n! = n \times (n - 1)!$
 
 Let's design the mathematical equation to implement algorithm.
 
-$
+$$
 f(x) = \begin{cases}  
     n \times f(n-1) & \text{(n >= 1)} \\ 
     1 & \text{(n = 0)} 
   \end{cases}  
-$
-
-$$
-f(x) = \begin{cases}  
-    n \times f(n-1) & \text{$n >= 1$} \\  
-    1 & \text{$n = 0$}  
-  \end{cases}
 $$
 
 ---
