@@ -71,7 +71,8 @@ If the exit condition of the recursive function is satisfied, the called last fu
 ---
 
 #### Factorial
-The mathematical equation of factorial is as follows. Factorial can be expressed recursively because it has repeated calculations.
+Factorial can be expressed recursively because it has repeated calculations.
+The mathematical equation of factorial is as follows. 
 
 $n! = n \times (n - 1) \times ...\times 2 \times 1$
 
@@ -85,12 +86,12 @@ $n! = n \times (n - 1)!$
 
 Let's design the mathematical equation to implement algorithm.
 
-$
+$$
 f(x) = \begin{cases}  
-    n \times f(n-1) & \text{(n >= 1)} \\  
+    n \times f(n-1) & \text{(n >= 1)} \\ 
     1 & \text{(n = 0)}  
   \end{cases}  
-$
+$$
 
 ---
 
