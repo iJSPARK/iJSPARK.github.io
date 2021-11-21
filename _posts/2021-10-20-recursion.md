@@ -37,11 +37,11 @@ When the recursive function is called, it makes a copy and run the copy. However
 ```c
 #include <stdio.h>
 
-void Recursive(int num) {
-    if(num <= 0)    // exit condition
+void Recursive(int n) {
+    if(n <= 0)    // exit condition
         return;
-    printf("Recursive call %d\n", num);
-    Recursive(num - 1);    // argument toward the exit condition
+    printf("Recursive call %d\n", n);
+    Recursive(n - 1);    // argument toward the exit condition
 }
 
 int main(void) {
@@ -55,24 +55,25 @@ Recursive call 3
 Recursive call 2
 Recursive call 1
 
-If parameter `num` is less than or equal to 0, function is terminated.
+If parameter `n` is less than or equal to 0, function is terminated.
 
-<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/142749561-d03c29f7-cac9-47df-9021-258753a8e2f1.png"> 
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/142752327-6d83552d-790b-49bc-afb3-c779de33c336.png"> 
 
 If the exit condition of the recursive function is satisfied, the called last function start to return. The function exits after the function return a value.
 
 <br/>
 
-## Design of recursive function
+## Design method of recursive function
 ### why use a recursive function
-1. Recursive functions simplify complex data structures or algorithms. 
-2. Recursive mathematical equation can be translated directly into code.
+1. Recursive functions <span style='background-color: #dcffe4'>simplify</span> complex data structures or algorithms. 
+2. Recursive <span style='background-color: #dcffe4'>mathematical expression</span> can be translated directly into code.
 
 ---
 
 #### Factorial
-Factorial can be expressed recursively because it has repeated calculations.
-The mathematical equation of factorial is as follows. 
+Factorial can be expressed recursively because it has repeated calculations. 
+First, it is important to define the recursive function well. All that remains is to implement it well.
+The mathematical expression of factorial is as follows. 
 
 $n! = n \times (n - 1) \times ...\times 2 \times 1$
 
@@ -84,14 +85,14 @@ $n! = n \times (n - 1)!$
 
 ---
 
-Let's design the mathematical equation to implement algorithm.
+Let's design the mathematical expression to implement algorithm.
 
-$$
-f(x) = \begin{cases}  
+$
+f(x) = \begin{cases} 
     n \times f(n-1) & \text{(n >= 1)} \\ 
-    1 & \text{(n = 0)} 
-  \end{cases}  
-$$
+    1 & \text{(n = 0)} \\
+  \end{cases} 
+$
 
 ---
 
@@ -100,11 +101,11 @@ Let's express the factorial recursively.
 ```c
 #include <stdio.h>
 
-int Factorial(int num) {
-    if (num == 0)    // exit condition
+int Factorial(int n) {
+    if (n == 0)    // exit condition
         return 1;
     else
-        return num * Factorial(num - 1);    // argument toward the exit condition
+        return n * Factorial(n - 1);    // argument toward the exit condition
 }
 
 int main(void) {
@@ -115,3 +116,20 @@ int main(void) {
 
 * Run result
 5! = 120
+
+---
+
+## Fibonacci Sequence
+0, 1, 1, 2, 3, 5, 8, 13...
+
+$F_n = F_{n-1} + F_{n-2}    (n > 2)$
+$F_1 = 0$
+$F_2 = 1$
+
+$$
+f(x) = \begin{cases}  
+    0 & \text{(n = 1)} \\
+    1 & \text{(n = 2)} \\
+    f(n-1) + f(n - 2) & \text{(n > 2)} \\  
+  \end{cases}  
+$$
