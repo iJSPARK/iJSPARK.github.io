@@ -117,14 +117,25 @@ int main(void) {
 * Run result
 5! = 120
 
----
+<br/>
 
 ## Fibonacci Sequence
-0, 1, 1, 2, 3, 5, 8, 13...
+Fibonacci sequence is a representative sequence of recursive functions. 
+0, 1, 1, 2, 3, 5, 8, 13, 21...
 
-$F_n = F_{n-1} + F_{n-2}$  
-$F_1 = 0$  
-$F_2 = 1$  
+---
+
+### Definition
+**Initial value**
+$F_1 = 0$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(n = 1)$
+$F_2 = 1$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(n = 2)$
+
+**Recurrence formula**
+$F_n = F_{n-1} + F_{n-2}$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(n > 2)$
+
+---
+
+Let's design the mathematical expression to implement algorithm.
 
 $$
 f(x) = \begin{cases}  
@@ -133,3 +144,29 @@ f(x) = \begin{cases}
     f(n-1) + f(n - 2) & \text{(n > 2)} \\  
   \end{cases}  
 $$
+
+---
+
+Let's express the factorial recursively.
+
+```c
+#include <stdio.h>
+
+int Fibonacci(int n){
+    if (n == 1)
+        return 0;
+    else if (n == 2)
+        return 1;
+    else
+        return Fibonacci(n - 1) + Fibonacci(n - 2);
+}
+
+int main() {
+    for(int i = 1; i <= 7; i++) // start from 1
+        printf("%d ", Fibonacci(i));    // up to the 7th
+    return 0;
+}
+```
+
+* Run result
+0, 1, 1, 2, 3, 5, 8
