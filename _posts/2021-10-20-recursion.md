@@ -87,12 +87,12 @@ $n! = n \times (n - 1)!$
 
 Let's design the mathematical expression to implement algorithm.
 
-$
+$$
 f(x) = \begin{cases} 
     n \times f(n-1) & \text{(n >= 1)} \\ 
-    1 & \text{(n = 0)} \\
+    1 & \text{(n = 0)} 
   \end{cases} 
-$
+$$
 
 ---
 
@@ -122,9 +122,9 @@ int main(void) {
 ## Fibonacci Sequence
 0, 1, 1, 2, 3, 5, 8, 13...
 
-$F_n = F_{n-1} + F_{n-2}    (n > 2)$
-$F_1 = 0$
-$F_2 = 1$
+$F_n = F_{n-1} + F_{n-2}$  
+$F_1 = 0$  
+$F_2 = 1$  
 
 $$
 f(x) = \begin{cases}  
