@@ -72,20 +72,30 @@ If the exit condition of the recursive function is satisfied, the called last fu
 
 #### Factorial
 The mathematical equation of factorial is as follows. Factorial can be expressed recursively because it has repeated calculations.
+
 $n! = n \times (n - 1) \times ...\times 2 \times 1$
 
-1. Let's express the factorial recursively.
+---
+
+Let's express the factorial recursively.
+
 $n! = n \times (n - 1)!$
 
-2. Let's design the mathematical equation to implement algorithm.
+---
+
+Let's design the mathematical equation to implement algorithm.
+
 $
-f(x) = \begin{cases} 
+f(x) = \begin{cases}  
     n \times f(n-1) & \text{(n >= 1)} \\  
     1 & \text{(n = 0)}  
-  \end{cases}
+  \end{cases}  
 $
 
-3. Let's express the factorial recursively.
+---
+
+Let's express the factorial recursively.
+
 ```c
 #include <stdio.h>
 
