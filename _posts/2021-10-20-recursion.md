@@ -31,7 +31,7 @@ When the recursive function is called, it makes a copy and run the copy. However
 
 ### Condition of recursive function
 
-1. Recursive funciton must have an exit condition.
+1. Recursive function must have an exit condition.
 2. An argument of recursive function must converge to the exit condition.
 
 ```c
@@ -65,8 +65,8 @@ If the exit condition of the recursive function is satisfied, the called last fu
 
 ## Design method of recursive function
 ### why use a recursive function
-1. Recursive functions <span style='background-color: #dcffe4'>simplify</span> complex data structures or algorithms. 
-2. Recursive <span style='background-color: #dcffe4'>mathematical expression</span> can be translated directly into code.
+1. Recursive functions **simplify** complex data structures or algorithms. 
+2. Recursive **mathematical expression** can be translated directly into code.
 
 ---
 
@@ -114,7 +114,7 @@ int main(void) {
 }
 ```
 
-* Run result
+**Run Result** 
 5! = 120
 
 <br/>
@@ -126,11 +126,11 @@ Fibonacci sequence is a representative sequence of recursive functions.
 ---
 
 ### Definition
-**Initial value**
+**Initial value**  
 $F_1 = 0$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(n = 1)$
 $F_2 = 1$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(n = 2)$
 
-**Recurrence formula**
+**Recurrence formula**  
 $F_n = F_{n-1} + F_{n-2}$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(n > 2)$
 
 ---
@@ -168,5 +168,104 @@ int main() {
 }
 ```
 
-* Run result
+**Run Result**  
 0, 1, 1, 2, 3, 5, 8
+
+<br/>
+
+## The Tower of Hanoi
+### Understanding & Find Pattern
+How to move a disc stacked on one bar to another disc as it is. It complies with the following rules:
+
+1. Only one disc can be moved at a time.
+2. A big disc can't be placed on top of a small disc.
+
+Let's take a look the tower of Hanoi when there are 3 discs.
+
+* A : Start point
+* B : Middle point
+* C : Target point
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/142840847-011bb319-84e3-4cec-9a85-5c698443e21c.png">
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/142840858-ce36be1b-dc26-42b9-a4b1-60922fdf37c9.png">
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/142840868-411c5958-812c-4a7b-bb1f-c09d36516030.png">
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/142840878-c6d6668a-3efe-4003-984e-a099791a044c.png">
+
+---
+
+This time, let's take a look the tower of Hanoi when there are 2 discs. Compare it to when there are 3 discs.
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/142839487-461b908f-7d47-45cb-8284-ca5782cc977c.png">
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/142839497-113e332b-826e-4c26-857e-dc6eb8ff1d20.png">
+
+* Transfer order and method
+1. Move the small disc(no.1)from A to B. 
+2. Move the big disc(no.2)from A to C. 
+3. Move the small disc(no.1)from B to C. 
+
+---
+
+Let's look at the three discs again. First, no.3 disc should be moved to C. However no.1, no.2 must be moved first. 
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/142845122-4cc3c0cb-2564-4943-8cf0-ec0d2833737b.png">
+
+Then, how about thinking of the above discs as one disc except for the last one?
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/142845149-8978c60f-d2d8-4c47-844a-ad6f747170e1.png">
+
+<img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/142846723-254680cf-2431-43e4-9b67-539f37a7f96e.png">
+
+This is the same as when there are two discs.
+Let's **generalize** the pattern of movement order.
+
+1. Move $n - 1$ small disc from A to B. 
+2. Move $1$ big disc from A to C. 
+3. Move $n - 1$ small disc from B to C. 
+
+Then, we have to find **exit condition**. In the above case, step 3 is completed. <span style='background-color: #dcffe4'>So, if remain of discs to move is one, the escape condition is satisfied.</span> 
+
+---
+
+### Algorithm Implement
+
+**Recursive Pattern**
+Step 1. Move $n - 1$ small disc(last disc exception) from A to B. 
+Step 2. Move $1$ big disc(last disc) from A to C. 
+Step 3. Move $n - 1$ small disc(moved in 1 step) from B to C. 
+
+**Exit Condition**
+ Remain of the discs to move is one, top disc of Hanoi's Tower(No.1 disc).
+
+```c
+#include <stdio.h>
+
+// n : The number of disc to move
+// disc movement : from >> via >> to
+void HanoiMove(int n, char from, char via, char to) {
+    if (n == 1) // exit condition
+        printf("No.1 disc from % c move to % c\n", from, to);
+    else {  // Movement
+        HanoiMove(n - 1, from, to, via);    // step 1
+        printf("No.%d disc from %c move to %c\n", n, from, to);    // step 2(last disc is No.n disc)
+        HanoiMove(n - 1, via, from, to);     // step 3
+    }
+}
+
+int main() {
+    HanoiMove(3, 'A', 'B', 'C');
+    return 0;
+}
+```
+
+**Run Result**  
+No.1 disc from A move to C
+No.2 disc from A move to B
+No.1 disc from C move to B
+No.3 disc from A move to C
+No.1 disc from B move to A
+No.2 disc from B move to C
+No.1 disc from A move to C
