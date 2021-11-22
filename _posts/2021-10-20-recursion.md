@@ -114,8 +114,8 @@ int main(void) {
 }
 ```
 
-**Run Result** 
-5! = 120
+**Run Result**  
+5! = 120  
 
 <br/>
 
@@ -220,7 +220,7 @@ Then, how about thinking of the above discs as one disc except for the last one?
 
 <img width="800" alt="computer_inside" src="https://user-images.githubusercontent.com/92430498/142846723-254680cf-2431-43e4-9b67-539f37a7f96e.png">
 
-This is the same as when there are two discs.
+This is the same as when there are two discs.  
 Let's **generalize** the pattern of movement order.
 
 1. Move $n - 1$ small disc from A to B. 
@@ -233,12 +233,12 @@ Then, we have to find **exit condition**. In the above case, step 3 is completed
 
 #### Algorithm Implement
 
-**Recursive Pattern**
-Step 1. Move $n - 1$ small disc(last disc exception) from A to B. 
-Step 2. Move $1$ big disc(last disc) from A to C. 
-Step 3. Move $n - 1$ small disc(moved in 1 step) from B to C. 
+**Recursive Pattern**  
+Step 1. Move $n - 1$ small disc(last disc exception) from A to B.  
+Step 2. Move $1$ big disc(last disc) from A to C.  
+Step 3. Move $n - 1$ small disc(moved in 1 step) from B to C.  
 
-**Exit Condition**
+**Exit Condition**  
  Remain of the discs to move is one, top disc of Hanoi's Tower(No.1 disc).
 
 ```c
@@ -263,10 +263,10 @@ int main() {
 ```
 
 **Run Result**  
-No.1 disc from A move to C
-No.2 disc from A move to B
-No.1 disc from C move to B
-No.3 disc from A move to C
-No.1 disc from B move to A
-No.2 disc from B move to C
-No.1 disc from A move to C
+No.1 disc from A move to C  
+No.2 disc from A move to B  
+No.1 disc from C move to B  
+No.3 disc from A move to C  
+No.1 disc from B move to A  
+No.2 disc from B move to C  
+No.1 disc from A move to C  
