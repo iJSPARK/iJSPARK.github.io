@@ -70,7 +70,7 @@ If the exit condition of the recursive function is satisfied, the called last fu
 
 ---
 
-#### Factorial
+### Factorial
 Factorial can be expressed recursively because it has repeated calculations. 
 First, it is important to define the recursive function well. All that remains is to implement it well.
 The mathematical expression of factorial is as follows. 
@@ -119,13 +119,13 @@ int main(void) {
 
 <br/>
 
-## Fibonacci Sequence
+### Fibonacci Sequence
 Fibonacci sequence is a representative sequence of recursive functions. 
 0, 1, 1, 2, 3, 5, 8, 13, 21...
 
 ---
 
-### Definition
+#### Definition
 **Initial value**  
 $F_1 = 0$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(n = 1)$
 $F_2 = 1$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(n = 2)$
@@ -147,6 +147,7 @@ $$
 
 ---
 
+#### Algorithm Impelment
 Let's express the factorial recursively.
 
 ```c
@@ -173,8 +174,8 @@ int main() {
 
 <br/>
 
-## The Tower of Hanoi
-### Understanding & Find Pattern
+### The Tower of Hanoi
+#### Understanding & Find Pattern
 How to move a disc stacked on one bar to another disc as it is. It complies with the following rules:
 
 1. Only one disc can be moved at a time.
@@ -230,7 +231,7 @@ Then, we have to find **exit condition**. In the above case, step 3 is completed
 
 ---
 
-### Algorithm Implement
+#### Algorithm Implement
 
 **Recursive Pattern**
 Step 1. Move $n - 1$ small disc(last disc exception) from A to B. 
