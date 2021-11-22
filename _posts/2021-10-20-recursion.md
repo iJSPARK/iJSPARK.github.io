@@ -63,13 +63,13 @@ If the exit condition of the recursive function is satisfied, the called last fu
 
 <br/>
 
-## Design method of recursive function
-### why use a recursive function
+## why use a recursive function  
 1. Recursive functions **simplify** complex data structures or algorithms. 
 2. Recursive **mathematical expression** can be translated directly into code.
 
----
+<br/>
 
+## Design method of recursive function  
 ### Factorial
 Factorial can be expressed recursively because it has repeated calculations. 
 First, it is important to define the recursive function well. All that remains is to implement it well.
