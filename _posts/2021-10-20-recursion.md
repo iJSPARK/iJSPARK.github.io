@@ -63,7 +63,7 @@ If the exit condition of the recursive function is satisfied, the called last fu
 
 <br/>
 
-## why use a recursive function  
+## Why use a recursive function?  
 1. Recursive functions **simplify** complex data structures or algorithms. 
 2. Recursive **mathematical expression** can be translated directly into code.
 
