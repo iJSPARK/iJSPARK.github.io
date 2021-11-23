@@ -3,7 +3,7 @@ title : "Recursion"
 categories : 
     - Data Structure
 tag :
-    - [Recursive function, Recursion, Fibonacci]  # [C, python]
+    - [Recursive function, Recursion, Factorial, Fibonacci, The Tower of Hanoi, C, Swift]  # [C, python]
 author_profile: false
 sidebar:
     nav: "docs"
@@ -98,6 +98,7 @@ $$
 
 Let's express the factorial recursively.
 
+**C**  
 ```c
 #include <stdio.h>
 
@@ -112,6 +113,21 @@ int main(void) {
     printf("5! = %d\n", Factorial(5));
     return 0;
 }
+```
+
+**Swift**  
+```swift
+import Foundation
+func Factorial(_ n: Int) -> Int {
+    if n == 0 {
+      return 1
+    }
+    else {
+      return n * Factorial(n - 1)
+    }
+}
+
+print("5! = \(Factorial(5))")
 ```
 
 **Run Result**  
@@ -150,6 +166,7 @@ $$
 #### Algorithm Impelment
 Let's express the factorial recursively.
 
+**C**  
 ```c
 #include <stdio.h>
 
@@ -166,6 +183,27 @@ int main() {
     for(int i = 1; i <= 7; i++) // start from 1
         printf("%d ", Fibonacci(i));    // up to the 7th
     return 0;
+}
+```
+
+**Swift**  
+```swift
+import Foundation
+
+func Fibonacci(_ n: Int) -> Int {
+    if n == 1 {
+      return 0
+    }
+    else if n == 2 {
+      return 1
+    }
+    else {
+      return Fibonacci(n - 1) + Fibonacci(n - 2)
+    }
+}
+
+for i in 1...7 {
+  print(Fibonacci(i), terminator: " ")
 }
 ```
 
@@ -241,18 +279,19 @@ Step 3. Move $n - 1$ small disc(moved in 1 step) from B to C.
 **Exit Condition**  
  Remain of the discs to move is one, top disc of Hanoi's Tower(No.1 disc).
 
+**C**  
 ```c
 #include <stdio.h>
 
 // n : The number of disc to move
-// disc movement : from >> via >> to
-void HanoiMove(int n, char from, char via, char to) {
+// disc movement : from >> by >> to
+void HanoiMove(int n, char from, char by, char to) {
     if (n == 1) // exit condition
         printf("No.1 disc from % c move to % c\n", from, to);
     else {  // Movement
-        HanoiMove(n - 1, from, to, via);    // step 1
+        HanoiMove(n - 1, from, to, by);    // step 1
         printf("No.%d disc from %c move to %c\n", n, from, to);    // step 2(last disc is No.n disc)
-        HanoiMove(n - 1, via, from, to);     // step 3
+        HanoiMove(n - 1, by, from, to);     // step 3
     }
 }
 
@@ -260,6 +299,24 @@ int main() {
     HanoiMove(3, 'A', 'B', 'C');
     return 0;
 }
+```
+
+**Swift**  
+```swift
+import Foundation
+
+func HanoiMove(_ n: Int, _ from: Character, _ by: Character, _ to: Character) -> Void {
+    if n == 1 { // exit condition
+      print("No.1 disc from \(from) move \(to) to")
+    }
+    else {
+      HanoiMove(n - 1, from, to, by)
+      print("No.\(n) disc from \(from) move \(to) to")
+      HanoiMove(n - 1, by, from, to)
+    }
+}
+
+print(HanoiMove(3, "A", "B", "C"))
 ```
 
 **Run Result**  
