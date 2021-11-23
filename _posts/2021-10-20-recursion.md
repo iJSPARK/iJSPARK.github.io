@@ -115,6 +115,8 @@ int main(void) {
 }
 ```
 
+---
+
 **Swift**  
 ```swift
 import Foundation
@@ -185,6 +187,8 @@ int main() {
     return 0;
 }
 ```
+
+---
 
 **Swift**  
 ```swift
@@ -300,6 +304,8 @@ int main() {
     return 0;
 }
 ```
+
+---
 
 **Swift**  
 ```swift
