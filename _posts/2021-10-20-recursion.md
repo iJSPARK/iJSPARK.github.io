@@ -50,10 +50,10 @@ int main(void) {
 }
 ```
 
-* Run result
-Recursive call 3
-Recursive call 2
-Recursive call 1
+* Run result  
+Recursive call 3  
+Recursive call 2  
+Recursive call 1  
 
 If parameter `n` is less than or equal to 0, function is terminated.
 
