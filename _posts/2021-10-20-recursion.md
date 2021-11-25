@@ -132,6 +132,8 @@ func Factorial(_ n: Int) -> Int {
 print("5! = \(Factorial(5))")
 ```
 
+---
+
 **Run Result**  
 5! = 120  
 
@@ -210,6 +212,8 @@ for i in 1...7 {
   print(Fibonacci(i), terminator: " ")
 }
 ```
+
+---
 
 **Run Result**  
 0, 1, 1, 2, 3, 5, 8
@@ -324,6 +328,8 @@ func HanoiMove(_ n: Int, _ from: Character, _ by: Character, _ to: Character) ->
 
 print(HanoiMove(3, "A", "B", "C"))
 ```
+
+---
 
 **Run Result**  
 No.1 disc from A move to C  
