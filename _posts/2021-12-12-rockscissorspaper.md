@@ -14,7 +14,7 @@ toc_label: "On This Page"
 ---
 
 ## Rock, Scissors, Paper Game
-It is my first very simple project in iOS. The game is play with robot. This is in the education book 'Devlop in Swift' provided by Apple. However, the book has no answer.
+It is my first very simple project in iOS. The project is good for Enumeration and UI study. The game is rock paper scissors with a robot. This is in the education book 'Devlop in Swift' provided by Apple. However, the book has no answer.
 
 <img width="300" alt="Screen Shot 2021-12-12 at 4 35 59 PM" src="https://user-images.githubusercontent.com/92430498/145704355-be4d1e93-59ca-4942-867d-219cfefcb4d3.png">
 <img width="300" alt="Screen Shot 2021-12-12 at 3 57 04 PM" src="https://user-images.githubusercontent.com/92430498/145703472-6ca23d62-9856-4e91-bbae-bba3db89d14a.png">
@@ -245,47 +245,38 @@ scissorsSignButton.setAttributedTitle(text, for: .normal)
 1. `NS` is NeXT Step(NeXT Computer OS). That was very interesting for me. Steve Jobs is fired in Apple. He start NeXT. Apple take over NeXT because of OS(Next Step) and Steve Jobs. So NeXT's OS came to play a pivotal role in macOS. I knew this story because of the 'Steve Jobs' book.  
 2. `NSobject` Objective-C root class. Inherit basic interface to the runtime system and ability to behave as Objective-C objects.   
 3. `NSAttributeStirng` Portion of text:visual style/hyperlink/accessbilty data. Object manages character strings and associated sets of attributes(font and kerning).   
-Declaration 
 ```swift
 class NSAttributedString : NSObject
 ```  
 4. `setAttributedTitle` Sets the styled title to use for the specified state.  
-Declaration
 ```swift
 func setAttributedTitle(_ title: NSAttributedString?, for state: UIControl.State)
 ```  
-4. `UIFont` An object provide access to font's character/gly ph.  
-Declaration 
+4. `UIFont` An object provide access to font's character/gly ph.   
 ```swift
 class UIFont : NSObject
 ```   
-5. `font` The font of text. The value of this attribute is a `UIFont` object.  
-Declaration 
+5. `font` The font of text. The value of this attribute is a `UIFont` object.   
 ```swift
 static let font: NSAttributedString.Key
 ```  
 6. `UIView` An object that manages the content for a rectangular area on the screen.  
-Declaration
 ```swift
 @MainActor class UIView : UIResponder
 ```  
-7. `UILabel` A view that displays one or more lines of informational text.  
-Declaration 
+7. `UILabel` A view that displays one or more lines of informational text.   
 ```siwft
 @MainActor class UILabel : UIView
 ```  
-8. `text` The text that the label displays.  
-Declaration 
+8. `text` The text that the label displays.   
 ```swift
 var text: String? { get set }
 ```  
-9. `UIControl` The base class for controls, which are visual elements that convey a specific action or intention in response to user interactions.  
-Declaration 
+9. `UIControl` The base class for controls, which are visual elements that convey a specific action or intention in response to user interactions.   
 ```swift
 @MainActor class UIControl : UIView
 ```  
-10. `UIButton` A control that executes your custom code in response to user interactions.  
-Declaration 
+10. `UIButton` A control that executes your custom code in response to user interactions.   
 ```swift
 @MainActor class UIButton : UIControl
 ```  
