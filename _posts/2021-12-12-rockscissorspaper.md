@@ -14,7 +14,7 @@ toc_label: "On This Page"
 ---
 
 ## Rock, Scissors, Paper Game
-This project is in the education book 'Devlop in Swift' provided by Apple. However, the book has no answer. The game is rock paper scissors with a robot. It is my first very simple project in iOS. The project is good for Enumeration and UI study. 
+This project is in the education book 'Devlop in Swift' provided by Apple. However, the book has no answer. The game is rock paper scissors with a robot. It is good for Enumeration and UI study. 
 
 <img width="300" alt="Screen Shot 2021-12-12 at 4 35 59 PM" src="https://user-images.githubusercontent.com/92430498/145704355-be4d1e93-59ca-4942-867d-219cfefcb4d3.png">
 <img width="300" alt="Screen Shot 2021-12-12 at 3 57 04 PM" src="https://user-images.githubusercontent.com/92430498/145703472-6ca23d62-9856-4e91-bbae-bba3db89d14a.png">
@@ -228,7 +228,7 @@ scissorsSignButton.titleLabel?.font = UIFont.systemFont(ofSize: 70)
 
 ---
 
-#### Solution
+#### Solving
 It was solved by Googling. 
 `NSAttributedString` : String with associated attributes.
 `setAttributedTitle` : Set for apply change attributes of string.
