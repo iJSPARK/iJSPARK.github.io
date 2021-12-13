@@ -265,7 +265,7 @@ static let font: NSAttributedString.Key
 @MainActor class UIView : UIResponder
 ```  
 7. `UILabel` A view that displays one or more lines of informational text.   
-```siwft
+```swift
 @MainActor class UILabel : UIView
 ```  
 8. `text` The text that the label displays.   
