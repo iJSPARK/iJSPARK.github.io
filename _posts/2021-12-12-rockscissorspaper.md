@@ -241,26 +241,26 @@ scissorsSignButton.setAttributedTitle(text, for: .normal)
 
 ---
 
-#### Class, Propery, Method
-1. `NS` is NeXT Step(NeXT Computer OS). That was very interesting for me. Steve Jobs is fired in Apple. He start NeXT. Apple take over NeXT because of OS(Next Step) and Steve Jobs. So NeXT's OS came to play a pivotal role in macOS. I knew this story because of the 'Steve Jobs' book. 
-2. `NSobject` Objective-C root class. Inherit basic interface to the runtime system and ability to behave as Objective-C objects. 
-3. `NSAttributeStirng` Portion of text:visual style/hyperlink/accessbilty data. Object manages character strings and associated sets of attributes(font and kerning). 
-Declaration `class NSAttributedString : NSObject`
-4. `setAttributedTitle` Sets the styled title to use for the specified state.
-Declaration `func setAttributedTitle(_ title: NSAttributedString?, for state: UIControl.State)`
-4. `UIFont` An object provide access to font's character/gly ph. 
-Declaration `class UIFont : NSObject`
-5. `font` The font of text. The value of this attribute is a `UIFont` object. 
-Declaration `static let font: NSAttributedString.Key`
-6. `UIView` An object that manages the content for a rectangular area on the screen.
-Declaration `@MainActor class UIView : UIResponder`
-7. `UILabel` A view that displays one or more lines of informational text.
-Declaration `@MainActor class UILabel : UIView`
-8. `text` The text that the label displays.
-Declaration `var text: String? { get set }`
-9. `UIControl` The base class for controls, which are visual elements that convey a specific action or intention in response to user interactions.
-Declaration `@MainActor class UIControl : UIView`
-10. `UIButton` A control that executes your custom code in response to user interactions.
-Declaration `@MainActor class UIButton : UIControl`
+#### Class, Propery, Method in ViewController
+1. `NS` is NeXT Step(NeXT Computer OS). That was very interesting for me. Steve Jobs is fired in Apple. He start NeXT. Apple take over NeXT because of OS(Next Step) and Steve Jobs. So NeXT's OS came to play a pivotal role in macOS. I knew this story because of the 'Steve Jobs' book.  
+2. `NSobject` Objective-C root class. Inherit basic interface to the runtime system and ability to behave as Objective-C objects.   
+3. `NSAttributeStirng` Portion of text:visual style/hyperlink/accessbilty data. Object manages character strings and associated sets of attributes(font and kerning).   
+Declaration `class NSAttributedString : NSObject`  
+4. `setAttributedTitle` Sets the styled title to use for the specified state.  
+Declaration `func setAttributedTitle(_ title: NSAttributedString?, for state: UIControl.State)`  
+4. `UIFont` An object provide access to font's character/gly ph.  
+Declaration `class UIFont : NSObject`  
+5. `font` The font of text. The value of this attribute is a `UIFont` object.  
+Declaration `static let font: NSAttributedString.Key`  
+6. `UIView` An object that manages the content for a rectangular area on the screen.  
+Declaration `@MainActor class UIView : UIResponder`  
+7. `UILabel` A view that displays one or more lines of informational text.  
+Declaration `@MainActor class UILabel : UIView`  
+8. `text` The text that the label displays.  
+Declaration `var text: String? { get set }`  
+9. `UIControl` The base class for controls, which are visual elements that convey a specific action or intention in response to user interactions.  
+Declaration `@MainActor class UIControl : UIView`  
+10. `UIButton` A control that executes your custom code in response to user interactions.  
+Declaration `@MainActor class UIButton : UIControl`  
 
 
