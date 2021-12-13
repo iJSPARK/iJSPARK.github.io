@@ -21,11 +21,13 @@ It is my first very simple project in iOS. The game is play with robot. This is 
 <img width="300" alt="Screen Shot 2021-12-12 at 4 35 59 PM" src="https://user-images.githubusercontent.com/92430498/145704355-be4d1e93-59ca-4942-867d-219cfefcb4d3.png">
 <img width="300" alt="Screen Shot 2021-12-12 at 3 57 24 PM" src="https://user-images.githubusercontent.com/92430498/145703477-63f209ad-a2f9-448e-84b7-7fc2cca05171.png">
 
-After writing the code, I try to study it by tearing the main source file one by one and situation in which the error occurred. The main source file is `Sign.swift`, `GameState.swift`, `ViewController` with `Main.storyboard`.  
+After writing the code, I try to study it by tearing the main source file and situation in which the error occurred. The main source file is `Sign.swift`, `GameState.swift`, `ViewController` with `Main.storyboard`.  
 
 <img width="271" alt="Screen Shot 2021-12-12 at 3 09 22 PM" src="https://user-images.githubusercontent.com/92430498/145702529-e9efa920-3c40-422e-8149-c31c6ffe041e.png">
 
----
+<br/>
+
+### Source File
 
 **`Sign.swift`**
 
@@ -213,6 +215,9 @@ class ViewController: UIViewController {
 }
 ```
 
+---
+
+#### Problem
 At first I got it wrong here. After game is over, sign which user select should appear at the position of the scissors. But emoji size don't appear 70.
 Because scissorsSginButoon not Label but Button. `titleLabel` isn't correspond to Button so emoji's font back to standard form. I think that need to know achitecture of Swift.
 
@@ -223,6 +228,7 @@ scissorsSignButton.titleLabel?.font = UIFont.systemFont(ofSize: 70)
 
 ---
 
+#### Solution
 It was solved by Googling. 
 `NSAttributedString` : String with associated attributes.
 `setAttributedTitle` : Set for apply change attributes of string.
@@ -233,15 +239,28 @@ let text = NSAttributedString(string: userSign.emoji, attributes: [.font: UIFont
 scissorsSignButton.setAttributedTitle(text, for: .normal)
 ```
 
+---
+
+#### Class, Propery, Method
 1. `NS` is NeXT Step(NeXT Computer OS). That was very interesting for me. Steve Jobs is fired in Apple. He start NeXT. Apple take over NeXT because of OS(Next Step) and Steve Jobs. So NeXT's OS came to play a pivotal role in macOS. I knew this story because of the 'Steve Jobs' book. 
 2. `NSobject` Objective-C root class. Inherit basic interface to the runtime system and ability to behave as Objective-C objects. 
-3. `NSAttributeStirng` Portion of text:visual style/hyperlink/accessbilty data. Object manages character strings and associated sets of attributes(font and kerning). `class NSAttributedString : NSObject`
-4. `UIFont` An object provide access to font's character/glyph. `class UIFont : NSObject`
-5. `font` The font of text. The value of this attribute is a `UIFont` object. `static let font: NSAttributedString.Key`
-6. `UIView` An object that manages the content for a rectangular area on the screen.`@MainActor class UIView : UIResponder`
-7. `UILabel` A view that displays one or more lines of informational text.`@MainActor class UILabel : UIView`
-8. `text` The text that the label displays. `var text: String? { get set }`
-9. `UIControl` The base class for controls, which are visual elements that convey a specific action or intention in response to user interactions. `@MainActor class UIControl : UIView`
-10. `UIButton` A control that executes your custom code in response to user interactions.`@MainActor class UIButton : UIControl`
+3. `NSAttributeStirng` Portion of text:visual style/hyperlink/accessbilty data. Object manages character strings and associated sets of attributes(font and kerning). 
+Declaration `class NSAttributedString : NSObject`
+4. `setAttributedTitle` Sets the styled title to use for the specified state.
+Declaration `func setAttributedTitle(_ title: NSAttributedString?, for state: UIControl.State)`
+4. `UIFont` An object provide access to font's character/gly ph. 
+Declaration `class UIFont : NSObject`
+5. `font` The font of text. The value of this attribute is a `UIFont` object. 
+Declaration `static let font: NSAttributedString.Key`
+6. `UIView` An object that manages the content for a rectangular area on the screen.
+Declaration `@MainActor class UIView : UIResponder`
+7. `UILabel` A view that displays one or more lines of informational text.
+Declaration `@MainActor class UILabel : UIView`
+8. `text` The text that the label displays.
+Declaration `var text: String? { get set }`
+9. `UIControl` The base class for controls, which are visual elements that convey a specific action or intention in response to user interactions.
+Declaration `@MainActor class UIControl : UIView`
+10. `UIButton` A control that executes your custom code in response to user interactions.
+Declaration `@MainActor class UIButton : UIControl`
 
 
